@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rễ-root | Creative Photography Exhibition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #fafafa;
+            --gray: #888;
+            --light-gray: #e8e8e8;
+            --accent: #2d5a3d;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            min-height: 100vh;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero - Full Viewport Typography */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        /* Top Info Bar */
+        .hero-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 2.5rem 3rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        .hero-top-left,
+        .hero-top-right {
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .hero-top-right {
+            text-align: right;
+        }
+
+        .hero-subtitle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(-18rem);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray);
+            opacity: 0;
+            animation: fadeIn 1s ease 0.4s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            text-align: center;
+            line-height: 0.85;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title .viet {
+            display: block;
+            font-size: clamp(8rem, 32vw, 30rem);
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title .root {
+            display: block;
+            font-size: clamp(6rem, 24vw, 22rem);
+            color: var(--black);
+        }
+
+        /* Individual letter styling */
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            animation: letterFadeIn 0.8s ease forwards;
+        }
+
+        /* Entrance animation */
+        @keyframes letterFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) rotate(5deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Organic floating animations - each slightly different */
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            20% { transform: translateY(-12px) rotate(-1.5deg); }
+            40% { transform: translateY(-5px) rotate(0.5deg); }
+            60% { transform: translateY(-15px) rotate(-1deg); }
+            80% { transform: translateY(-3px) rotate(0.8deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            15% { transform: translateY(-8px) rotate(1deg); }
+            35% { transform: translateY(-18px) rotate(-0.5deg); }
+            55% { transform: translateY(-6px) rotate(1.2deg); }
+            75% { transform: translateY(-14px) rotate(-0.8deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-14px) rotate(0.8deg); }
+            45% { transform: translateY(-4px) rotate(-1deg); }
+            65% { transform: translateY(-10px) rotate(0.5deg); }
+            85% { transform: translateY(-16px) rotate(-0.5deg); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            18% { transform: translateY(-10px) rotate(-0.8deg); }
+            38% { transform: translateY(-20px) rotate(0.5deg); }
+            58% { transform: translateY(-8px) rotate(-0.5deg); }
+            78% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        @keyframes float5 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            22% { transform: translateY(-16px) rotate(1.2deg); }
+            42% { transform: translateY(-6px) rotate(-0.8deg); }
+            62% { transform: translateY(-12px) rotate(0.3deg); }
+            82% { transform: translateY(-4px) rotate(-0.5deg); }
+        }
+
+        @keyframes float6 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            20% { transform: translateY(-6px) rotate(-0.5deg); }
+            40% { transform: translateY(-14px) rotate(1deg); }
+            60% { transform: translateY(-10px) rotate(-0.8deg); }
+            80% { transform: translateY(-18px) rotate(0.5deg); }
+        }
+
+        /* Vietnamese letters - rễ */
+        .viet .letter:nth-child(1) {
+            animation: letterFadeIn 0.8s ease forwards, float1 7s ease-in-out 1s infinite;
+            animation-delay: 0s, 1s;
+        }
+        .viet .letter:nth-child(2) {
+            animation: letterFadeIn 0.8s ease forwards, float3 8s ease-in-out 1.2s infinite;
+            animation-delay: 0.1s, 1.3s;
+        }
+
+        /* Root letters */
+        .root .letter:nth-child(1) {
+            animation: letterFadeIn 0.8s ease forwards, float2 9s ease-in-out 1.4s infinite;
+            animation-delay: 0.2s, 1.6s;
+        }
+        .root .letter:nth-child(2) {
+            animation: letterFadeIn 0.8s ease forwards, float4 7.5s ease-in-out 1.5s infinite;
+            animation-delay: 0.3s, 1.8s;
+        }
+        .root .letter:nth-child(3) {
+            animation: letterFadeIn 0.8s ease forwards, float1 8.5s ease-in-out 1.6s infinite;
+            animation-delay: 0.4s, 2s;
+        }
+        .root .letter:nth-child(4) {
+            animation: letterFadeIn 0.8s ease forwards, float5 7s ease-in-out 1.7s infinite;
+            animation-delay: 0.5s, 2.2s;
+        }
+
+        /* Hyphen between */
+        .hero-title .hyphen {
+            display: block;
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--gray);
+            opacity: 0;
+            margin: -1rem 0;
+            animation: fadeIn 1s ease 0.6s forwards, float6 10s ease-in-out 2s infinite;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        .scroll-hint span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gray), transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Concept */
+        .concept {
+            padding: 8rem 0;
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .concept-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--black);
+            font-style: italic;
+        }
+
+        .concept-words {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .concept-words span {
+            position: relative;
+        }
+
+        .concept-words span::before {
+            content: '·';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--accent);
+        }
+
+        .concept-words span:first-child::before {
+            display: none;
+        }
+
+        /* Divider */
+        .divider {
+            width: 1px;
+            height: 100px;
+            background: var(--light-gray);
+            margin: 0 auto;
+        }
+
+        /* Artists */
+        .artists {
+            padding: 6rem 0 8rem;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .artist {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .artist-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .artist-type {
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        /* Staggered animation delays */
+        .artist:nth-child(1) { animation-delay: 0.1s; }
+        .artist:nth-child(2) { animation-delay: 0.15s; }
+        .artist:nth-child(3) { animation-delay: 0.2s; }
+        .artist:nth-child(4) { animation-delay: 0.25s; }
+        .artist:nth-child(5) { animation-delay: 0.3s; }
+        .artist:nth-child(6) { animation-delay: 0.35s; }
+        .artist:nth-child(7) { animation-delay: 0.4s; }
+        .artist:nth-child(8) { animation-delay: 0.45s; }
+        .artist:nth-child(9) { animation-delay: 0.5s; }
+        .artist:nth-child(10) { animation-delay: 0.55s; }
+        .artist:nth-child(11) { animation-delay: 0.6s; }
+        .artist:nth-child(12) { animation-delay: 0.65s; }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Info Section */
+        .info {
+            padding: 6rem 0;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .info-block h3 {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .info-block p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .info-block a {
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray);
+            transition: border-color 0.3s ease;
+        }
+
+        .info-block a:hover {
+            border-color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--light-gray);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--gray);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-text a {
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-top {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .hero-top-right {
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                transform: translate(-50%, -50%) translateY(-10rem);
+            }
+
+            .scroll-hint {
+                display: none;
+            }
+
+            .concept {
+                padding: 5rem 0;
+            }
+
+            .concept-text {
+                font-size: 1.25rem;
+            }
+
+            .concept-words {
+                gap: 1.5rem;
+            }
+
+            .artists-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title .viet {
+                font-size: 6rem;
+            }
+
+            .hero-title .root {
+                font-size: 4.5rem;
+            }
+
+            .hero-title .hyphen {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                transform: translate(-50%, -50%) translateY(-7rem);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section class="hero">
+            <div class="hero-top">
+                <div class="hero-top-left">
+                    12 January 2026<br>
+                    Media Studio
+                </div>
+                <div class="hero-top-right">
+                    RMIT University Vietnam<br>
+                    Saigon South Campus
+                </div>
+            </div>
+
+            <p class="hero-subtitle">Creative Photography Exhibition</p>
+            
+            <h1 class="hero-title">
+                <span class="viet">
+                    <span class="letter">r</span><span class="letter">ễ</span>
+                </span>
+                <span class="hyphen">—</span>
+                <span class="root">
+                    <span class="letter">r</span><span class="letter">o</span><span class="letter">o</span><span class="letter">t</span>
+                </span>
+            </h1>
+
+            <div class="scroll-hint">
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <section class="concept">
+            <div class="container">
+                <p class="concept-text">
+                    Like roots themselves, identities are complex networks: visible and hidden, 
+                    individual and collective, inherited and chosen. Through lens-based installation, 
+                    we photograph not just what roots look like—but what they feel like.
+                </p>
+                <div class="concept-words">
+                    <span>re-root</span>
+                    <span>re-define</span>
+                    <span>root-route</span>
+                    <span>regenerate</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="artists" id="artists">
+            <div class="container">
+                <h2 class="section-title">Exhibiting Artists</h2>
+                <div class="artists-grid">
+                    <div class="artist">
+                        <span class="artist-name">Anh Le Duc</span>
+                        <span class="artist-type">Installation</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Huynh Que Y</span>
+                        <span class="artist-type">Installation</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Agathe Wales</span>
+                        <span class="artist-type">Installation</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Ho Kim Anh</span>
+                        <span class="artist-type">Installation</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Do Le Gia An</span>
+                        <span class="artist-type">Installation</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Ton</span>
+                        <span class="artist-type">Installation</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Mai Huynh Nha (Nako)</span>
+                        <span class="artist-type">Slide</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Sin Yi Liong</span>
+                        <span class="artist-type">Slide</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Le Ngoc Van Anh</span>
+                        <span class="artist-type">Slide</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Tran Minh Khue</span>
+                        <span class="artist-type">Slide</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Melissa Holley</span>
+                        <span class="artist-type">Slide</span>
+                    </div>
+                    <div class="artist">
+                        <span class="artist-name">Phan Nu Thien An</span>
+                        <span class="artist-type">Slide</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h3>Date & Time</h3>
+                        <p>Monday, 12 January 2026<br>Time TBA</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Location</h3>
+                        <p>Media Studio<br>RMIT University Vietnam<br>Saigon South Campus</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Course</h3>
+                        <p>Creative Photography<br>Digital Media Elective<br>Semester 3, 2025</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Contact</h3>
+                        <p><a href="mailto:placeholder@rmit.edu.vn">placeholder@rmit.edu.vn</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">
+                School of Communication & Design · <a href="https://rmit.edu.vn" target="_blank">RMIT University Vietnam</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
