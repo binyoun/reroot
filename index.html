@@ -46,40 +46,42 @@
         /* Hero */
         .hero {
             min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         /* Top - Exhibition Title */
         .hero-top {
             position: absolute;
-            top: 2.5rem;
+            top: 1.5rem;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
             opacity: 0;
             animation: fadeIn 1s ease 0.3s forwards;
+            width: 90%;
         }
 
         .hero-exhibition-title {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--gray);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .hero-venue {
-            font-size: 0.65rem;
-            letter-spacing: 0.12em;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--gray);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .hero-title {
@@ -90,19 +92,19 @@
             letter-spacing: -0.02em;
         }
 
-        /* Thicker, darker title */
+        /* Title with better scaling ratio */
         .hero-title .viet {
             display: block;
-            font-size: clamp(5.6rem, 22vw, 21rem);
+            font-size: clamp(7rem, 28vw, 21rem);
             font-style: italic;
             font-weight: 700;
             color: var(--accent-dark);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.1rem;
         }
 
         .hero-title .root {
             display: block;
-            font-size: clamp(4.2rem, 17vw, 15.4rem);
+            font-size: clamp(5.5rem, 22vw, 15.4rem);
             font-weight: 600;
             color: var(--black);
         }
@@ -271,22 +273,22 @@
         /* Hyphen */
         .hero-title .hyphen {
             display: block;
-            font-size: clamp(2rem, 7vw, 5.6rem);
+            font-size: clamp(2.5rem, 9vw, 5.6rem);
             font-weight: 400;
             color: var(--gray);
             opacity: 0;
-            margin: -0.5rem 0;
+            margin: -0.3rem 0;
             animation: fadeIn 1s ease 0.8s forwards, evolve1 12s ease-in-out 2s infinite;
         }
 
         /* Root Scroll Indicator */
         .scroll-roots {
             position: absolute;
-            bottom: 1rem;
+            bottom: 0.5rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 140px;
+            width: 80px;
+            height: 110px;
             opacity: 0;
             animation: fadeIn 1.2s ease 1.8s forwards;
             cursor: pointer;
@@ -360,10 +362,10 @@
 
         .scroll-text {
             position: absolute;
-            bottom: 145px;
+            bottom: 115px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--gray);
@@ -516,6 +518,15 @@
         .artist:nth-child(10) { animation-delay: 0.55s; }
         .artist:nth-child(11) { animation-delay: 0.6s; }
         .artist:nth-child(12) { animation-delay: 0.65s; }
+        .artist:nth-child(13) { animation-delay: 0.7s; }
+        .artist:nth-child(14) { animation-delay: 0.75s; }
+        .artist:nth-child(15) { animation-delay: 0.8s; }
+        .artist:nth-child(16) { animation-delay: 0.85s; }
+        .artist:nth-child(17) { animation-delay: 0.9s; }
+        .artist:nth-child(18) { animation-delay: 0.95s; }
+        .artist:nth-child(19) { animation-delay: 1s; }
+        .artist:nth-child(20) { animation-delay: 1.05s; }
+        .artist:nth-child(21) { animation-delay: 1.1s; }
 
         @keyframes fadeUp {
             from {
@@ -585,30 +596,34 @@
             text-decoration: none;
         }
 
-        /* Responsive - Tighter mobile spacing */
+        /* Responsive - Better mobile scaling */
         @media (max-width: 768px) {
             .hero {
-                padding: 1.5rem;
-                min-height: 100svh;
+                padding: 1rem;
             }
 
             .hero-top {
-                top: 1.5rem;
+                top: 1rem;
+            }
+
+            .hero-exhibition-title {
+                font-size: 0.6rem;
+                letter-spacing: 0.2em;
             }
 
             .hero-venue {
-                display: none;
+                font-size: 0.5rem;
             }
 
             .scroll-roots {
-                width: 70px;
-                height: 100px;
+                width: 60px;
+                height: 85px;
                 bottom: 0.5rem;
             }
 
             .scroll-text {
-                bottom: 105px;
-                font-size: 0.55rem;
+                bottom: 90px;
+                font-size: 0.5rem;
             }
 
             .concept {
@@ -637,45 +652,72 @@
 
         @media (max-width: 480px) {
             .hero {
-                padding: 1rem;
+                padding: 0.75rem;
             }
 
             .hero-top {
-                top: 1rem;
+                top: 0.75rem;
             }
 
             .hero-exhibition-title {
-                font-size: 0.65rem;
-                letter-spacing: 0.2em;
+                font-size: 0.55rem;
+                letter-spacing: 0.15em;
+                margin-bottom: 0.3rem;
             }
 
+            .hero-venue {
+                font-size: 0.45rem;
+                letter-spacing: 0.08em;
+            }
+
+            /* Keep title large on mobile */
             .hero-title .viet {
-                font-size: 4.5rem;
+                font-size: clamp(5.5rem, 30vw, 7rem);
             }
 
             .hero-title .root {
-                font-size: 3.5rem;
+                font-size: clamp(4.2rem, 24vw, 5.5rem);
             }
 
             .hero-title .hyphen {
-                font-size: 1.5rem;
-                margin: -0.3rem 0;
+                font-size: clamp(1.8rem, 10vw, 2.5rem);
+                margin: -0.2rem 0;
             }
 
             .scroll-roots {
                 width: 50px;
-                height: 80px;
-                bottom: 0.5rem;
+                height: 70px;
+                bottom: 0.3rem;
             }
 
             .scroll-text {
-                bottom: 85px;
-                font-size: 0.5rem;
+                bottom: 75px;
+                font-size: 0.45rem;
             }
 
             .root-divider {
                 width: 50px;
                 height: 70px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 360px) {
+            .hero-title .viet {
+                font-size: 5rem;
+            }
+
+            .hero-title .root {
+                font-size: 4rem;
+            }
+
+            .scroll-roots {
+                width: 45px;
+                height: 60px;
+            }
+
+            .scroll-text {
+                bottom: 65px;
             }
         }
     </style>
@@ -793,7 +835,7 @@
                     </div>
                     <div class="artist">
                         <span class="artist-name">Mai Huynh Nha</span>
-                        <span class="artist-type">Digital Image </span>
+                        <span class="artist-type">Digital Image</span>
                     </div>
                     <div class="artist">
                         <span class="artist-name">Sin Yi Liong</span>
@@ -815,7 +857,7 @@
                         <span class="artist-name">Phan Nu Thien An</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
-                     <div class="artist">
+                    <div class="artist">
                         <span class="artist-name">Nguyễn Thu Tra</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
