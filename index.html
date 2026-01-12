@@ -92,7 +92,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* Title with better scaling ratio */
         .hero-title .viet {
             display: block;
             font-size: clamp(7rem, 28vw, 21rem);
@@ -109,7 +108,6 @@
             color: var(--black);
         }
 
-        /* Individual letter styling */
         .letter {
             display: inline-block;
             opacity: 0;
@@ -127,122 +125,48 @@
             }
         }
 
-        /* Organic breathing - fade, grow, evolve */
         @keyframes evolve1 {
-            0%, 100% { 
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            30% { 
-                opacity: 0.5;
-                transform: translateY(-6px) scale(1.12);
-            }
-            60% { 
-                opacity: 0.8;
-                transform: translateY(-3px) scale(1.05);
-            }
-            80% { 
-                opacity: 0.4;
-                transform: translateY(-8px) scale(1.18);
-            }
+            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+            30% { opacity: 0.5; transform: translateY(-6px) scale(1.12); }
+            60% { opacity: 0.8; transform: translateY(-3px) scale(1.05); }
+            80% { opacity: 0.4; transform: translateY(-8px) scale(1.18); }
         }
 
         @keyframes evolve2 {
-            0%, 100% { 
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            25% { 
-                opacity: 0.6;
-                transform: translateY(-10px) scale(1.15);
-            }
-            50% { 
-                opacity: 0.9;
-                transform: translateY(-4px) scale(1.03);
-            }
-            75% { 
-                opacity: 0.35;
-                transform: translateY(-12px) scale(1.22);
-            }
+            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+            25% { opacity: 0.6; transform: translateY(-10px) scale(1.15); }
+            50% { opacity: 0.9; transform: translateY(-4px) scale(1.03); }
+            75% { opacity: 0.35; transform: translateY(-12px) scale(1.22); }
         }
 
         @keyframes evolve3 {
-            0%, 100% { 
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            20% { 
-                opacity: 0.7;
-                transform: translateY(-5px) scale(1.08);
-            }
-            45% { 
-                opacity: 0.45;
-                transform: translateY(-10px) scale(1.2);
-            }
-            70% { 
-                opacity: 0.85;
-                transform: translateY(-3px) scale(1.04);
-            }
+            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+            20% { opacity: 0.7; transform: translateY(-5px) scale(1.08); }
+            45% { opacity: 0.45; transform: translateY(-10px) scale(1.2); }
+            70% { opacity: 0.85; transform: translateY(-3px) scale(1.04); }
         }
 
         @keyframes evolve4 {
-            0%, 100% { 
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            35% { 
-                opacity: 0.55;
-                transform: translateY(-8px) scale(1.14);
-            }
-            55% { 
-                opacity: 0.75;
-                transform: translateY(-5px) scale(1.06);
-            }
-            85% { 
-                opacity: 0.4;
-                transform: translateY(-11px) scale(1.25);
-            }
+            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+            35% { opacity: 0.55; transform: translateY(-8px) scale(1.14); }
+            55% { opacity: 0.75; transform: translateY(-5px) scale(1.06); }
+            85% { opacity: 0.4; transform: translateY(-11px) scale(1.25); }
         }
 
         @keyframes evolve5 {
-            0%, 100% { 
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            22% { 
-                opacity: 0.5;
-                transform: translateY(-9px) scale(1.16);
-            }
-            48% { 
-                opacity: 0.8;
-                transform: translateY(-4px) scale(1.05);
-            }
-            72% { 
-                opacity: 0.35;
-                transform: translateY(-13px) scale(1.28);
-            }
+            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+            22% { opacity: 0.5; transform: translateY(-9px) scale(1.16); }
+            48% { opacity: 0.8; transform: translateY(-4px) scale(1.05); }
+            72% { opacity: 0.35; transform: translateY(-13px) scale(1.28); }
         }
 
         @keyframes evolve6 {
-            0%, 100% { 
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            28% { 
-                opacity: 0.65;
-                transform: translateY(-7px) scale(1.1);
-            }
-            52% { 
-                opacity: 0.4;
-                transform: translateY(-11px) scale(1.2);
-            }
-            78% { 
-                opacity: 0.85;
-                transform: translateY(-3px) scale(1.03);
-            }
+            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+            28% { opacity: 0.65; transform: translateY(-7px) scale(1.1); }
+            52% { opacity: 0.4; transform: translateY(-11px) scale(1.2); }
+            78% { opacity: 0.85; transform: translateY(-3px) scale(1.03); }
         }
 
-        /* Vietnamese letters - rễ */
         .viet .letter:nth-child(1) {
             animation: letterFadeIn 1s ease forwards, evolve1 8s ease-in-out 1.2s infinite;
             animation-delay: 0s, 1.2s;
@@ -252,7 +176,6 @@
             animation-delay: 0.15s, 1.5s;
         }
 
-        /* Root letters */
         .root .letter:nth-child(1) {
             animation: letterFadeIn 1s ease forwards, evolve2 10s ease-in-out 1.6s infinite;
             animation-delay: 0.3s, 1.8s;
@@ -270,7 +193,6 @@
             animation-delay: 0.6s, 2.4s;
         }
 
-        /* Hyphen */
         .hero-title .hyphen {
             display: block;
             font-size: clamp(2.5rem, 9vw, 5.6rem);
@@ -281,7 +203,6 @@
             animation: fadeIn 1s ease 0.8s forwards, evolve1 12s ease-in-out 2s infinite;
         }
 
-        /* Root Scroll Indicator */
         .scroll-roots {
             position: absolute;
             bottom: 0.5rem;
@@ -310,54 +231,18 @@
             animation: growRoot 3s ease-in-out infinite;
         }
 
-        .root-line.main {
-            stroke-width: 2;
-            animation-delay: 0s;
-        }
-
-        .root-line.branch-1 {
-            stroke-width: 1.2;
-            animation-delay: 0.5s;
-        }
-
-        .root-line.branch-2 {
-            stroke-width: 1;
-            animation-delay: 0.8s;
-        }
-
-        .root-line.branch-3 {
-            stroke-width: 0.8;
-            animation-delay: 1.1s;
-        }
-
-        .root-line.tendril-1 {
-            stroke-width: 0.6;
-            animation-delay: 1.4s;
-        }
-
-        .root-line.tendril-2 {
-            stroke-width: 0.5;
-            animation-delay: 1.6s;
-        }
-
-        .root-line.tendril-3 {
-            stroke-width: 0.5;
-            animation-delay: 1.8s;
-        }
+        .root-line.main { stroke-width: 2; animation-delay: 0s; }
+        .root-line.branch-1 { stroke-width: 1.2; animation-delay: 0.5s; }
+        .root-line.branch-2 { stroke-width: 1; animation-delay: 0.8s; }
+        .root-line.branch-3 { stroke-width: 0.8; animation-delay: 1.1s; }
+        .root-line.tendril-1 { stroke-width: 0.6; animation-delay: 1.4s; }
+        .root-line.tendril-2 { stroke-width: 0.5; animation-delay: 1.6s; }
+        .root-line.tendril-3 { stroke-width: 0.5; animation-delay: 1.8s; }
 
         @keyframes growRoot {
-            0% {
-                stroke-dashoffset: 200;
-                opacity: 0.3;
-            }
-            50% {
-                stroke-dashoffset: 0;
-                opacity: 1;
-            }
-            100% {
-                stroke-dashoffset: -200;
-                opacity: 0.3;
-            }
+            0% { stroke-dashoffset: 200; opacity: 0.3; }
+            50% { stroke-dashoffset: 0; opacity: 1; }
+            100% { stroke-dashoffset: -200; opacity: 0.3; }
         }
 
         .scroll-text {
@@ -427,7 +312,7 @@
             display: none;
         }
 
-        /* Root Divider for Artists Section */
+        /* Root Divider */
         .root-divider {
             width: 80px;
             height: 120px;
@@ -447,18 +332,9 @@
         }
 
         @keyframes growRootSlow {
-            0% {
-                stroke-dashoffset: 200;
-                opacity: 0.2;
-            }
-            50% {
-                stroke-dashoffset: 0;
-                opacity: 0.7;
-            }
-            100% {
-                stroke-dashoffset: -200;
-                opacity: 0.2;
-            }
+            0% { stroke-dashoffset: 200; opacity: 0.2; }
+            50% { stroke-dashoffset: 0; opacity: 0.7; }
+            100% { stroke-dashoffset: -200; opacity: 0.2; }
         }
 
         /* Artists */
@@ -491,12 +367,23 @@
             align-items: baseline;
             opacity: 0;
             animation: fadeUp 0.6s ease forwards;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .artist:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .artist:hover .artist-name {
+            color: var(--accent);
         }
 
         .artist-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.25rem;
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .artist-type {
@@ -507,36 +394,195 @@
         }
 
         .artist:nth-child(1) { animation-delay: 0.1s; }
-        .artist:nth-child(2) { animation-delay: 0.15s; }
-        .artist:nth-child(3) { animation-delay: 0.2s; }
-        .artist:nth-child(4) { animation-delay: 0.25s; }
-        .artist:nth-child(5) { animation-delay: 0.3s; }
-        .artist:nth-child(6) { animation-delay: 0.35s; }
-        .artist:nth-child(7) { animation-delay: 0.4s; }
-        .artist:nth-child(8) { animation-delay: 0.45s; }
-        .artist:nth-child(9) { animation-delay: 0.5s; }
-        .artist:nth-child(10) { animation-delay: 0.55s; }
-        .artist:nth-child(11) { animation-delay: 0.6s; }
-        .artist:nth-child(12) { animation-delay: 0.65s; }
-        .artist:nth-child(13) { animation-delay: 0.7s; }
-        .artist:nth-child(14) { animation-delay: 0.75s; }
-        .artist:nth-child(15) { animation-delay: 0.8s; }
-        .artist:nth-child(16) { animation-delay: 0.85s; }
-        .artist:nth-child(17) { animation-delay: 0.9s; }
-        .artist:nth-child(18) { animation-delay: 0.95s; }
-        .artist:nth-child(19) { animation-delay: 1s; }
-        .artist:nth-child(20) { animation-delay: 1.05s; }
-        .artist:nth-child(21) { animation-delay: 1.1s; }
+        .artist:nth-child(2) { animation-delay: 0.12s; }
+        .artist:nth-child(3) { animation-delay: 0.14s; }
+        .artist:nth-child(4) { animation-delay: 0.16s; }
+        .artist:nth-child(5) { animation-delay: 0.18s; }
+        .artist:nth-child(6) { animation-delay: 0.2s; }
+        .artist:nth-child(7) { animation-delay: 0.22s; }
+        .artist:nth-child(8) { animation-delay: 0.24s; }
+        .artist:nth-child(9) { animation-delay: 0.26s; }
+        .artist:nth-child(10) { animation-delay: 0.28s; }
+        .artist:nth-child(11) { animation-delay: 0.3s; }
+        .artist:nth-child(12) { animation-delay: 0.32s; }
+        .artist:nth-child(13) { animation-delay: 0.34s; }
+        .artist:nth-child(14) { animation-delay: 0.36s; }
+        .artist:nth-child(15) { animation-delay: 0.38s; }
+        .artist:nth-child(16) { animation-delay: 0.4s; }
+        .artist:nth-child(17) { animation-delay: 0.42s; }
+        .artist:nth-child(18) { animation-delay: 0.44s; }
+        .artist:nth-child(19) { animation-delay: 0.46s; }
+        .artist:nth-child(20) { animation-delay: 0.48s; }
+        .artist:nth-child(21) { animation-delay: 0.5s; }
+        .artist:nth-child(22) { animation-delay: 0.52s; }
+        .artist:nth-child(23) { animation-delay: 0.54s; }
+        .artist:nth-child(24) { animation-delay: 0.56s; }
+        .artist:nth-child(25) { animation-delay: 0.58s; }
+        .artist:nth-child(26) { animation-delay: 0.6s; }
+        .artist:nth-child(27) { animation-delay: 0.62s; }
+        .artist:nth-child(28) { animation-delay: 0.64s; }
+        .artist:nth-child(29) { animation-delay: 0.66s; }
+        .artist:nth-child(30) { animation-delay: 0.68s; }
+        .artist:nth-child(31) { animation-delay: 0.7s; }
+        .artist:nth-child(32) { animation-delay: 0.72s; }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Artist Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.4s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: 1px solid var(--light-gray);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            border-color: var(--black);
+        }
+
+        .modal-close::before,
+        .modal-close::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 1px;
+            background: var(--black);
+        }
+
+        .modal-close::before { transform: rotate(45deg); }
+        .modal-close::after { transform: rotate(-45deg); }
+
+        .modal-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal-info {
+            padding: 3rem;
+        }
+
+        .modal-artist-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .modal-work-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--accent-dark);
+            margin-bottom: 2rem;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .modal-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .modal-detail-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .modal-detail-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        .modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-dark);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--accent-dark);
+            transition: all 0.3s ease;
+        }
+
+        .modal-link:hover {
+            background: var(--accent-dark);
+            color: var(--white);
+        }
+
+        .modal-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
         }
 
         /* Info Section */
@@ -596,129 +642,54 @@
             text-decoration: none;
         }
 
-        /* Responsive - Better mobile scaling */
+        /* Body scroll lock when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                padding: 1rem;
-            }
+            .hero { padding: 1rem; }
+            .hero-top { top: 1rem; }
+            .hero-exhibition-title { font-size: 0.6rem; letter-spacing: 0.2em; }
+            .hero-venue { font-size: 0.5rem; }
+            .scroll-roots { width: 60px; height: 85px; bottom: 0.5rem; }
+            .scroll-text { bottom: 90px; font-size: 0.5rem; }
+            .concept { padding: 4rem 0; }
+            .concept-text { font-size: 1.25rem; }
+            .concept-words { gap: 1.5rem; margin-top: 3rem; }
+            .root-divider { width: 60px; height: 90px; margin: 3rem auto 1.5rem; }
+            .artists-grid { grid-template-columns: 1fr; }
 
-            .hero-top {
-                top: 1rem;
-            }
-
-            .hero-exhibition-title {
-                font-size: 0.6rem;
-                letter-spacing: 0.2em;
-            }
-
-            .hero-venue {
-                font-size: 0.5rem;
-            }
-
-            .scroll-roots {
-                width: 60px;
-                height: 85px;
-                bottom: 0.5rem;
-            }
-
-            .scroll-text {
-                bottom: 90px;
-                font-size: 0.5rem;
-            }
-
-            .concept {
-                padding: 4rem 0;
-            }
-
-            .concept-text {
-                font-size: 1.25rem;
-            }
-
-            .concept-words {
-                gap: 1.5rem;
-                margin-top: 3rem;
-            }
-
-            .root-divider {
-                width: 60px;
-                height: 90px;
-                margin: 3rem auto 1.5rem;
-            }
-
-            .artists-grid {
-                grid-template-columns: 1fr;
-            }
+            .modal-overlay { padding: 1rem; }
+            .modal-info { padding: 2rem; }
+            .modal-artist-name { font-size: 1.5rem; }
+            .modal-work-title { font-size: 1.2rem; }
+            .modal-details { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 480px) {
-            .hero {
-                padding: 0.75rem;
-            }
+            .hero { padding: 0.75rem; }
+            .hero-top { top: 0.75rem; }
+            .hero-exhibition-title { font-size: 0.55rem; letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+            .hero-venue { font-size: 0.45rem; letter-spacing: 0.08em; }
+            .hero-title .viet { font-size: clamp(5.5rem, 30vw, 7rem); }
+            .hero-title .root { font-size: clamp(4.2rem, 24vw, 5.5rem); }
+            .hero-title .hyphen { font-size: clamp(1.8rem, 10vw, 2.5rem); margin: -0.2rem 0; }
+            .scroll-roots { width: 50px; height: 70px; bottom: 0.3rem; }
+            .scroll-text { bottom: 75px; font-size: 0.45rem; }
+            .root-divider { width: 50px; height: 70px; }
 
-            .hero-top {
-                top: 0.75rem;
-            }
-
-            .hero-exhibition-title {
-                font-size: 0.55rem;
-                letter-spacing: 0.15em;
-                margin-bottom: 0.3rem;
-            }
-
-            .hero-venue {
-                font-size: 0.45rem;
-                letter-spacing: 0.08em;
-            }
-
-            /* Keep title large on mobile */
-            .hero-title .viet {
-                font-size: clamp(5.5rem, 30vw, 7rem);
-            }
-
-            .hero-title .root {
-                font-size: clamp(4.2rem, 24vw, 5.5rem);
-            }
-
-            .hero-title .hyphen {
-                font-size: clamp(1.8rem, 10vw, 2.5rem);
-                margin: -0.2rem 0;
-            }
-
-            .scroll-roots {
-                width: 50px;
-                height: 70px;
-                bottom: 0.3rem;
-            }
-
-            .scroll-text {
-                bottom: 75px;
-                font-size: 0.45rem;
-            }
-
-            .root-divider {
-                width: 50px;
-                height: 70px;
-            }
+            .modal-close { top: 1rem; right: 1rem; width: 35px; height: 35px; }
+            .modal-info { padding: 1.5rem; }
+            .modal-details { grid-template-columns: 1fr; gap: 1rem; }
         }
 
-        /* Extra small screens */
         @media (max-width: 360px) {
-            .hero-title .viet {
-                font-size: 5rem;
-            }
-
-            .hero-title .root {
-                font-size: 4rem;
-            }
-
-            .scroll-roots {
-                width: 45px;
-                height: 60px;
-            }
-
-            .scroll-text {
-                bottom: 65px;
-            }
+            .hero-title .viet { font-size: 5rem; }
+            .hero-title .root { font-size: 4rem; }
+            .scroll-roots { width: 45px; height: 60px; }
+            .scroll-text { bottom: 65px; }
         }
     </style>
 </head>
@@ -778,7 +749,6 @@
             </div>
         </section>
 
-        <!-- Root Divider above Artists -->
         <div class="root-divider">
             <svg viewBox="0 0 100 180" preserveAspectRatio="xMidYMin meet">
                 <path class="root-line main" d="M50 0 Q50 30, 48 50 Q45 80, 50 110 Q55 140, 50 180"/>
@@ -797,10 +767,20 @@
             <div class="container">
                 <h2 class="section-title">Exhibiting Artists</h2>
                 <div class="artists-grid">
-                    <div class="artist">
+                    <!-- TEST ENTRY with modal data -->
+                    <div class="artist" 
+                         data-image="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800"
+                         data-artist="Test Artist Name"
+                         data-title="Untitled (Roots of Memory)"
+                         data-year="2025"
+                         data-medium="Archival pigment print, projection mapping, found objects"
+                         data-dimensions="Variable dimensions"
+                         data-link="https://example.com/full-documentation">
                         <span class="artist-name">TEST</span>
-                        <span class="artist-type">TEST</span>
+                        <span class="artist-type">Installation</span>
                     </div>
+
+                    <!-- Other artists without modal data yet -->
                     <div class="artist">
                         <span class="artist-name">Le Duc Anh</span>
                         <span class="artist-type">Installation</span>
@@ -833,7 +813,7 @@
                         <span class="artist-name">Bui Ngoc Kieu Anh</span>
                         <span class="artist-type">Installation</span>
                     </div>
-                     <div class="artist">
+                    <div class="artist">
                         <span class="artist-name">Florin Schroth</span>
                         <span class="artist-type">Installation</span>
                     </div>
@@ -885,20 +865,19 @@
                         <span class="artist-name">Nguyen Huu Nam Duong</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
-                    
-                     <div class="artist">
+                    <div class="artist">
                         <span class="artist-name">Tran Nguyen Chi Huy</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
-                     <div class="artist">
+                    <div class="artist">
                         <span class="artist-name">Nguyen Thanh Tuan Anh</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
-                     <div class="artist">
+                    <div class="artist">
                         <span class="artist-name">Nguyen Quynh Anh Thu</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
-                     <div class="artist">
+                    <div class="artist">
                         <span class="artist-name">Ho Ngoc Truc Linh</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
@@ -914,7 +893,7 @@
                         <span class="artist-name">Agathe Wales</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
-                     <div class="artist">
+                    <div class="artist">
                         <span class="artist-name">Cléo Migette</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
@@ -926,7 +905,6 @@
                         <span class="artist-name">Hung Chi Hai</span>
                         <span class="artist-type">Digital Image</span>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -962,6 +940,89 @@
             </p>
         </div>
     </footer>
+
+    <!-- Artist Modal -->
+    <div class="modal-overlay" id="artistModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"></button>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-info">
+                <h2 class="modal-artist-name" id="modalArtist"></h2>
+                <p class="modal-work-title" id="modalTitle"></p>
+                <div class="modal-details">
+                    <div class="modal-detail-item">
+                        <span class="modal-detail-label">Year</span>
+                        <span class="modal-detail-value" id="modalYear"></span>
+                    </div>
+                    <div class="modal-detail-item">
+                        <span class="modal-detail-label">Medium</span>
+                        <span class="modal-detail-value" id="modalMedium"></span>
+                    </div>
+                    <div class="modal-detail-item">
+                        <span class="modal-detail-label">Dimensions</span>
+                        <span class="modal-detail-value" id="modalDimensions"></span>
+                    </div>
+                </div>
+                <a class="modal-link" id="modalLink" href="#" target="_blank">
+                    View Full Documentation
+                    <svg viewBox="0 0 24 24">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('artistModal');
+        const modalClose = document.getElementById('modalClose');
+        const artists = document.querySelectorAll('.artist');
+
+        artists.forEach(artist => {
+            artist.addEventListener('click', () => {
+                // Check if artist has modal data
+                const image = artist.dataset.image;
+                const artistName = artist.dataset.artist;
+                const title = artist.dataset.title;
+                const year = artist.dataset.year;
+                const medium = artist.dataset.medium;
+                const dimensions = artist.dataset.dimensions;
+                const link = artist.dataset.link;
+
+                if (image && artistName && title) {
+                    // Populate modal
+                    document.getElementById('modalImage').src = image;
+                    document.getElementById('modalArtist').textContent = artistName;
+                    document.getElementById('modalTitle').textContent = title;
+                    document.getElementById('modalYear').textContent = year || '—';
+                    document.getElementById('modalMedium').textContent = medium || '—';
+                    document.getElementById('modalDimensions').textContent = dimensions || '—';
+                    document.getElementById('modalLink').href = link || '#';
+
+                    // Show modal
+                    modal.classList.add('active');
+                    document.body.classList.add('modal-open');
+                }
+            });
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+    </script>
 
 </body>
 </html>
