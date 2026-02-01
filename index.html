@@ -6,33 +6,45 @@
     <title>rễ-root | Creative Photography Exhibition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --black: #0a0a0a;
-            --white: #fafafa;
-            --gray: #888;
-            --light-gray: #e8e8e8;
-            --accent: #1a3d2a;
-            --accent-dark: #0f2a1c;
+            --black: #050505;
+            --white: #f0efe8;
+            --dim: #666;
+            --faint: #333;
+            --green: #3a7a52;
+            --green-light: #5aad72;
+            --green-bright: #7dd99b;
         }
 
         html { font-size: 16px; scroll-behavior: smooth; }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--white);
-            color: var(--black);
+            font-family: 'Space Mono', monospace;
+            background: var(--black);
+            color: var(--white);
             min-height: 100vh;
             line-height: 1.6;
-            font-weight: 300;
+            font-weight: 400;
+            overflow-x: hidden;
         }
 
+        #pixelCanvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page-content { position: relative; z-index: 1; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-        /* Hero */
+        /* ======================== */
+        /* HERO                     */
+        /* ======================== */
         .hero {
             min-height: 100vh;
             min-height: 100svh;
@@ -41,7 +53,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden;
             padding: 1.5rem;
         }
 
@@ -52,137 +63,149 @@
             transform: translateX(-50%);
             text-align: center;
             opacity: 0;
-            animation: fadeIn 1s ease 0.3s forwards;
+            animation: fadeIn 1.2s ease 0.3s forwards;
             width: 90%;
         }
 
         .hero-exhibition-title {
-            font-size: 0.7rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 0.4rem;
+            color: var(--green-bright);
+            margin-bottom: 0.5rem;
         }
 
         .hero-venue {
-            font-size: 0.6rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gray);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.08em;
+            color: rgba(240, 239, 232, 0.5);
             line-height: 1.5;
         }
 
+        /* TITLE */
         .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
             text-align: center;
-            line-height: 0.85;
-            letter-spacing: -0.02em;
+            line-height: 0.9;
         }
 
         .hero-title .viet {
             display: block;
-            font-size: clamp(7rem, 28vw, 21rem);
-            font-style: italic;
-            font-weight: 700;
-            color: var(--accent-dark);
-            margin-bottom: 0.1rem;
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(6.5rem, 26vw, 19rem);
+            font-weight: 800;
+            color: var(--green-light);
+            letter-spacing: -0.04em;
+            margin-bottom: 0;
         }
 
         .hero-title .root {
             display: block;
-            font-size: clamp(5.5rem, 22vw, 15.4rem);
-            font-weight: 600;
-            color: var(--black);
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(5rem, 20vw, 14rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.03em;
         }
 
         .letter {
             display: inline-block;
             opacity: 0;
-            animation: letterFadeIn 1s ease forwards;
+            animation: pixelReveal 0.8s steps(6) forwards;
+            position: relative;
         }
 
-        @keyframes letterFadeIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.9); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes pixelReveal {
+            0% { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+            20% { opacity: 0.3; transform: translateY(8px); filter: blur(3px); }
+            40% { opacity: 0.5; transform: translateY(4px); filter: blur(2px); }
+            60% { opacity: 0.7; transform: translateY(2px); filter: blur(1px); }
+            80% { opacity: 0.9; transform: translateY(1px); filter: blur(0); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
-        @keyframes evolve1 {
-            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
-            30% { opacity: 0.5; transform: translateY(-6px) scale(1.12); }
-            60% { opacity: 0.8; transform: translateY(-3px) scale(1.05); }
-            80% { opacity: 0.4; transform: translateY(-8px) scale(1.18); }
+        @keyframes pixelBreathe1 {
+            0%, 100% { opacity: 1; }
+            15% { opacity: 0.85; }
+            30% { opacity: 1; }
+            45% { opacity: 0.7; }
+            50% { opacity: 1; }
+            70% { opacity: 0.9; }
+            85% { opacity: 0.6; }
+            90% { opacity: 1; }
         }
 
-        @keyframes evolve2 {
-            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
-            25% { opacity: 0.6; transform: translateY(-10px) scale(1.15); }
-            50% { opacity: 0.9; transform: translateY(-4px) scale(1.03); }
-            75% { opacity: 0.35; transform: translateY(-12px) scale(1.22); }
+        @keyframes pixelBreathe2 {
+            0%, 100% { opacity: 1; }
+            10% { opacity: 0.75; }
+            25% { opacity: 1; }
+            40% { opacity: 0.65; }
+            55% { opacity: 1; }
+            65% { opacity: 0.8; }
+            80% { opacity: 1; }
+            92% { opacity: 0.55; }
         }
 
-        @keyframes evolve3 {
-            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
-            20% { opacity: 0.7; transform: translateY(-5px) scale(1.08); }
-            45% { opacity: 0.45; transform: translateY(-10px) scale(1.2); }
-            70% { opacity: 0.85; transform: translateY(-3px) scale(1.04); }
+        @keyframes pixelBreathe3 {
+            0%, 100% { opacity: 1; }
+            20% { opacity: 0.6; }
+            35% { opacity: 1; }
+            50% { opacity: 0.8; }
+            60% { opacity: 1; }
+            75% { opacity: 0.7; }
+            88% { opacity: 1; }
         }
 
-        @keyframes evolve4 {
-            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
-            35% { opacity: 0.55; transform: translateY(-8px) scale(1.14); }
-            55% { opacity: 0.75; transform: translateY(-5px) scale(1.06); }
-            85% { opacity: 0.4; transform: translateY(-11px) scale(1.25); }
+        @keyframes pixelShift {
+            0%, 100% { opacity: 1; transform: translate(0, 0); }
+            12% { opacity: 0.8; transform: translate(1px, 0); }
+            24% { opacity: 1; transform: translate(0, 0); }
+            48% { opacity: 0.6; transform: translate(-1px, 1px); }
+            52% { opacity: 1; transform: translate(0, 0); }
+            76% { opacity: 0.75; transform: translate(1px, -1px); }
+            80% { opacity: 1; transform: translate(0, 0); }
         }
 
-        @keyframes evolve5 {
-            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
-            22% { opacity: 0.5; transform: translateY(-9px) scale(1.16); }
-            48% { opacity: 0.8; transform: translateY(-4px) scale(1.05); }
-            72% { opacity: 0.35; transform: translateY(-13px) scale(1.28); }
-        }
+        .viet .letter:nth-child(1) { animation: pixelReveal 0.8s steps(6) forwards, pixelBreathe1 6s steps(8) 1s infinite; animation-delay: 0s, 1s; }
+        .viet .letter:nth-child(2) { animation: pixelReveal 0.8s steps(6) forwards, pixelShift 7s steps(10) 1.2s infinite; animation-delay: 0.15s, 1.2s; }
 
-        @keyframes evolve6 {
-            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
-            28% { opacity: 0.65; transform: translateY(-7px) scale(1.1); }
-            52% { opacity: 0.4; transform: translateY(-11px) scale(1.2); }
-            78% { opacity: 0.85; transform: translateY(-3px) scale(1.03); }
-        }
-
-        .viet .letter:nth-child(1) { animation: letterFadeIn 1s ease forwards, evolve1 8s ease-in-out 1.2s infinite; animation-delay: 0s, 1.2s; }
-        .viet .letter:nth-child(2) { animation: letterFadeIn 1s ease forwards, evolve3 9s ease-in-out 1.4s infinite; animation-delay: 0.15s, 1.5s; }
-        .root .letter:nth-child(1) { animation: letterFadeIn 1s ease forwards, evolve2 10s ease-in-out 1.6s infinite; animation-delay: 0.3s, 1.8s; }
-        .root .letter:nth-child(2) { animation: letterFadeIn 1s ease forwards, evolve5 8.5s ease-in-out 1.7s infinite; animation-delay: 0.4s, 2s; }
-        .root .letter:nth-child(3) { animation: letterFadeIn 1s ease forwards, evolve4 9.5s ease-in-out 1.8s infinite; animation-delay: 0.5s, 2.2s; }
-        .root .letter:nth-child(4) { animation: letterFadeIn 1s ease forwards, evolve6 7.5s ease-in-out 1.9s infinite; animation-delay: 0.6s, 2.4s; }
+        .root .letter:nth-child(1) { animation: pixelReveal 0.8s steps(6) forwards, pixelBreathe2 8s steps(8) 1.4s infinite; animation-delay: 0.3s, 1.4s; }
+        .root .letter:nth-child(2) { animation: pixelReveal 0.8s steps(6) forwards, pixelBreathe3 6.5s steps(8) 1.5s infinite; animation-delay: 0.4s, 1.5s; }
+        .root .letter:nth-child(3) { animation: pixelReveal 0.8s steps(6) forwards, pixelShift 9s steps(10) 1.6s infinite; animation-delay: 0.5s, 1.6s; }
+        .root .letter:nth-child(4) { animation: pixelReveal 0.8s steps(6) forwards, pixelBreathe1 7.5s steps(8) 1.7s infinite; animation-delay: 0.6s, 1.7s; }
 
         .hero-title .hyphen {
             display: block;
-            font-size: clamp(2.5rem, 9vw, 5.6rem);
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 8vw, 5rem);
             font-weight: 400;
-            color: var(--gray);
+            color: var(--faint);
             opacity: 0;
-            margin: -0.3rem 0;
-            animation: fadeIn 1s ease 0.8s forwards, evolve1 12s ease-in-out 2s infinite;
+            margin: -0.2rem 0;
+            animation: pixelReveal 0.8s steps(6) 0.6s forwards, pixelBreathe2 10s steps(8) 2s infinite;
         }
 
+        /* ROOT SCROLL INDICATOR */
         .scroll-roots {
             position: absolute;
-            bottom: 0.5rem;
+            bottom: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 110px;
+            width: 60px;
+            height: 100px;
             opacity: 0;
             animation: fadeIn 1.2s ease 1.8s forwards;
             cursor: pointer;
+            text-decoration: none;
+            display: block;
         }
 
         .scroll-roots svg { width: 100%; height: 100%; overflow: visible; }
 
         .root-line {
             fill: none;
-            stroke: var(--accent);
+            stroke: var(--green-light);
             stroke-width: 1.5;
             stroke-linecap: round;
             stroke-dasharray: 200;
@@ -191,12 +214,12 @@
         }
 
         .root-line.main { stroke-width: 2; animation-delay: 0s; }
-        .root-line.branch-1 { stroke-width: 1.2; animation-delay: 0.5s; }
-        .root-line.branch-2 { stroke-width: 1; animation-delay: 0.8s; }
-        .root-line.branch-3 { stroke-width: 0.8; animation-delay: 1.1s; }
-        .root-line.tendril-1 { stroke-width: 0.6; animation-delay: 1.4s; }
-        .root-line.tendril-2 { stroke-width: 0.5; animation-delay: 1.6s; }
-        .root-line.tendril-3 { stroke-width: 0.5; animation-delay: 1.8s; }
+        .root-line.b1 { stroke-width: 1.2; animation-delay: 0.5s; }
+        .root-line.b2 { stroke-width: 1; animation-delay: 0.8s; }
+        .root-line.b3 { stroke-width: 0.8; animation-delay: 1.1s; }
+        .root-line.t1 { stroke-width: 0.6; animation-delay: 1.4s; }
+        .root-line.t2 { stroke-width: 0.5; animation-delay: 1.6s; }
+        .root-line.t3 { stroke-width: 0.5; animation-delay: 1.8s; }
 
         @keyframes growRoot {
             0% { stroke-dashoffset: 200; opacity: 0.3; }
@@ -204,37 +227,25 @@
             100% { stroke-dashoffset: -200; opacity: 0.3; }
         }
 
-        .scroll-text {
-            position: absolute;
-            bottom: 115px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.55rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gray);
-            opacity: 0;
-            animation: fadeIn 1s ease 2s forwards, pulse 3s ease-in-out 2.5s infinite;
-        }
-
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Concept */
+        /* ======================== */
+        /* CONCEPT                  */
+        /* ======================== */
         .concept {
-            padding: 6rem 0;
-            max-width: 720px;
+            padding: 8rem 0;
+            max-width: 700px;
             margin: 0 auto;
             text-align: center;
         }
 
         .concept-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
             font-weight: 400;
-            line-height: 1.9;
-            color: var(--black);
-            font-style: italic;
+            line-height: 2.1;
+            color: rgba(240, 239, 232, 0.65);
+            letter-spacing: 0.01em;
         }
 
         .concept-words {
@@ -243,41 +254,36 @@
             justify-content: center;
             gap: 2.5rem;
             flex-wrap: wrap;
-            font-size: 0.75rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--gray);
+            color: var(--green-light);
         }
 
         .concept-words span { position: relative; }
-        .concept-words span::before { content: '·'; position: absolute; left: -1.5rem; color: var(--accent); }
+        .concept-words span::before { content: '·'; position: absolute; left: -1.5rem; color: var(--faint); }
         .concept-words span:first-child::before { display: none; }
 
-        /* Root Divider */
-        .root-divider {
-            width: 80px;
-            height: 120px;
-            margin: 4rem auto 2rem;
-            opacity: 0.6;
+        /* DIVIDER */
+        .divider { text-align: center; padding: 3rem 0; }
+        .divider-line {
+            width: 1px; height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--green), transparent);
+            margin: 0 auto;
         }
 
-        .root-divider svg { width: 100%; height: 100%; overflow: visible; }
-        .root-divider .root-line { stroke: var(--accent); animation: growRootSlow 4s ease-in-out infinite; }
-
-        @keyframes growRootSlow {
-            0% { stroke-dashoffset: 200; opacity: 0.2; }
-            50% { stroke-dashoffset: 0; opacity: 0.7; }
-            100% { stroke-dashoffset: -200; opacity: 0.2; }
-        }
-
-        /* Artists */
-        .artists { padding: 2rem 0 8rem; }
+        /* ======================== */
+        /* ARTISTS                  */
+        /* ======================== */
+        .artists { padding: 4rem 0 8rem; }
 
         .section-title {
-            font-size: 0.7rem;
-            letter-spacing: 0.35em;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
-            color: var(--gray);
+            color: var(--dim);
             margin-bottom: 4rem;
             text-align: center;
         }
@@ -285,338 +291,196 @@
         .artists-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.75rem 3rem;
+            gap: 0 3rem;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .artist {
-            padding: 1.25rem 0;
-            border-bottom: 1px solid var(--light-gray);
+            padding: 1.35rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             opacity: 0;
             animation: fadeUp 0.6s ease forwards;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
         }
 
-        .artist:hover { border-bottom-color: var(--accent); }
-        .artist:hover .artist-name { color: var(--accent); }
+        .artist:hover { border-bottom-color: var(--green); padding-left: 0.5rem; }
+        .artist:hover .artist-name { color: var(--green-light); }
 
         .artist-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
             font-weight: 500;
-            transition: color 0.3s ease;
+            color: rgba(240, 239, 232, 0.85);
+            transition: all 0.35s ease;
+            letter-spacing: 0.01em;
         }
 
         .artist-type {
-            font-size: 0.65rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--gray);
+            color: var(--faint);
         }
 
-        .artist:nth-child(1) { animation-delay: 0.1s; }
-        .artist:nth-child(2) { animation-delay: 0.12s; }
-        .artist:nth-child(3) { animation-delay: 0.14s; }
-        .artist:nth-child(4) { animation-delay: 0.16s; }
-        .artist:nth-child(5) { animation-delay: 0.18s; }
-        .artist:nth-child(6) { animation-delay: 0.2s; }
-        .artist:nth-child(7) { animation-delay: 0.22s; }
-        .artist:nth-child(8) { animation-delay: 0.24s; }
-        .artist:nth-child(9) { animation-delay: 0.26s; }
-        .artist:nth-child(10) { animation-delay: 0.28s; }
-        .artist:nth-child(11) { animation-delay: 0.3s; }
-        .artist:nth-child(12) { animation-delay: 0.32s; }
-        .artist:nth-child(13) { animation-delay: 0.34s; }
-        .artist:nth-child(14) { animation-delay: 0.36s; }
-        .artist:nth-child(15) { animation-delay: 0.38s; }
-        .artist:nth-child(16) { animation-delay: 0.4s; }
-        .artist:nth-child(17) { animation-delay: 0.42s; }
-        .artist:nth-child(18) { animation-delay: 0.44s; }
-        .artist:nth-child(19) { animation-delay: 0.46s; }
-        .artist:nth-child(20) { animation-delay: 0.48s; }
-        .artist:nth-child(21) { animation-delay: 0.5s; }
+        .artist:nth-child(1){animation-delay:.08s}.artist:nth-child(2){animation-delay:.1s}.artist:nth-child(3){animation-delay:.12s}.artist:nth-child(4){animation-delay:.14s}.artist:nth-child(5){animation-delay:.16s}.artist:nth-child(6){animation-delay:.18s}.artist:nth-child(7){animation-delay:.2s}.artist:nth-child(8){animation-delay:.22s}.artist:nth-child(9){animation-delay:.24s}.artist:nth-child(10){animation-delay:.26s}.artist:nth-child(11){animation-delay:.28s}.artist:nth-child(12){animation-delay:.3s}.artist:nth-child(13){animation-delay:.32s}.artist:nth-child(14){animation-delay:.34s}.artist:nth-child(15){animation-delay:.36s}.artist:nth-child(16){animation-delay:.38s}.artist:nth-child(17){animation-delay:.4s}.artist:nth-child(18){animation-delay:.42s}.artist:nth-child(19){animation-delay:.44s}.artist:nth-child(20){animation-delay:.46s}.artist:nth-child(21){animation-delay:.48s}.artist:nth-child(22){animation-delay:.5s}
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Artist Modal */
+        /* ======================== */
+        /* MODAL                    */
+        /* ======================== */
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 5, 0.96);
+            z-index: 1000; opacity: 0; visibility: hidden;
             transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            display: flex; align-items: center; justify-content: center; padding: 2rem;
         }
-
         .modal-overlay.active { opacity: 1; visibility: visible; }
-
         .modal-content {
-            background: var(--white);
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: translateY(30px) scale(0.95);
-            transition: transform 0.4s ease;
+            background: #0c0c0c; border: 1px solid rgba(255,255,255,0.06);
+            max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
+            position: relative; transform: translateY(30px) scale(0.95); transition: transform 0.4s ease;
         }
-
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-
         .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 1px solid var(--light-gray);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
+            position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px;
+            background: none; border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; z-index: 10;
         }
-
-        .modal-close:hover { border-color: var(--black); }
-        .modal-close::before, .modal-close::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 1px;
-            background: var(--black);
-        }
+        .modal-close:hover { border-color: var(--green-light); }
+        .modal-close::before, .modal-close::after { content: ''; position: absolute; width: 16px; height: 1px; background: var(--white); }
         .modal-close::before { transform: rotate(45deg); }
         .modal-close::after { transform: rotate(-45deg); }
-
-        .modal-image {
-            width: 100%;
-            aspect-ratio: 16/10;
-            object-fit: cover;
-            display: block;
-            background: var(--light-gray);
-        }
-
+        .modal-image { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; background: #111; }
         .modal-info { padding: 3rem; }
-
         .modal-artist-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 600;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--black);
+            color: var(--white);
+            letter-spacing: -0.01em;
         }
-
         .modal-work-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
             font-weight: 400;
-            font-style: italic;
-            color: var(--accent-dark);
+            color: var(--green-light);
             margin-bottom: 2rem;
+            letter-spacing: 0.01em;
         }
-
-        .modal-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
+        .modal-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
         .modal-detail-item { display: flex; flex-direction: column; gap: 0.3rem; }
+        .modal-detail-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+        .modal-detail-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 500; color: rgba(240,239,232,0.85); }
+        .modal-link { display: inline-flex; align-items: center; gap: 0.75rem; font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); text-decoration: none; padding: 1rem 1.5rem; border: 1px solid var(--green); transition: all 0.3s ease; }
+        .modal-link:hover { background: var(--green); color: var(--black); }
+        .modal-link svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; }
 
-        .modal-detail-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gray);
-        }
-
-        .modal-detail-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--black);
-        }
-
-        .modal-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-dark);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            border: 1px solid var(--accent-dark);
-            transition: all 0.3s ease;
-        }
-
-        .modal-link:hover { background: var(--accent-dark); color: var(--white); }
-
-        .modal-link svg {
-            width: 16px;
-            height: 16px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        /* Info Section */
-        .info {
-            padding: 6rem 0;
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .info-block h3 {
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
+        /* ======================== */
+        /* INFO                     */
+        /* ======================== */
+        .info { padding: 6rem 0; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; }
+        .info-block h3 { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--faint); margin-bottom: 1rem; }
         .info-block p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
             font-weight: 400;
-            line-height: 1.7;
+            line-height: 1.8;
+            color: rgba(240,239,232,0.7);
         }
+        .info-block a { color: var(--green-light); text-decoration: none; border-bottom: 1px solid var(--faint); transition: border-color 0.3s ease; }
+        .info-block a:hover { border-color: var(--green-light); }
 
-        .info-block a {
-            color: var(--white);
-            text-decoration: none;
-            border-bottom: 1px solid var(--gray);
-            transition: border-color 0.3s ease;
-        }
-
-        .info-block a:hover { border-color: var(--white); }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            border-top: 1px solid var(--light-gray);
-            text-align: center;
-        }
-
-        .footer-text {
-            font-size: 0.8rem;
-            color: var(--gray);
-            letter-spacing: 0.05em;
-        }
-
-        .footer-text a { color: var(--black); text-decoration: none; }
+        footer { padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.04); text-align: center; }
+        .footer-text { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--faint); letter-spacing: 0.06em; }
+        .footer-text a { color: var(--dim); text-decoration: none; transition: color 0.3s; }
+        .footer-text a:hover { color: var(--green-light); }
 
         body.modal-open { overflow: hidden; }
 
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero { padding: 1rem; }
             .hero-top { top: 1rem; }
-            .hero-exhibition-title { font-size: 0.6rem; letter-spacing: 0.2em; }
-            .hero-venue { font-size: 0.5rem; }
-            .scroll-roots { width: 60px; height: 85px; bottom: 0.5rem; }
-            .scroll-text { bottom: 90px; font-size: 0.5rem; }
-            .concept { padding: 4rem 0; }
-            .concept-text { font-size: 1.25rem; }
+            .hero-exhibition-title { font-size: 0.55rem; }
+            .hero-venue { font-size: 0.48rem; }
+            .scroll-roots { width: 45px; height: 80px; }
+            .concept { padding: 5rem 0; }
+            .concept-text { font-size: 1.1rem; }
             .concept-words { gap: 1.5rem; margin-top: 3rem; }
-            .root-divider { width: 60px; height: 90px; margin: 3rem auto 1.5rem; }
             .artists-grid { grid-template-columns: 1fr; }
             .modal-overlay { padding: 1rem; }
             .modal-info { padding: 2rem; }
-            .modal-artist-name { font-size: 1.5rem; }
-            .modal-work-title { font-size: 1.2rem; }
+            .modal-artist-name { font-size: 1.4rem; }
+            .modal-work-title { font-size: 1.1rem; }
             .modal-details { grid-template-columns: 1fr 1fr; }
         }
-
         @media (max-width: 480px) {
             .hero { padding: 0.75rem; }
             .hero-top { top: 0.75rem; }
-            .hero-exhibition-title { font-size: 0.55rem; letter-spacing: 0.15em; margin-bottom: 0.3rem; }
-            .hero-venue { font-size: 0.45rem; letter-spacing: 0.08em; }
-            .hero-title .viet { font-size: clamp(5.5rem, 30vw, 7rem); }
-            .hero-title .root { font-size: clamp(4.2rem, 24vw, 5.5rem); }
-            .hero-title .hyphen { font-size: clamp(1.8rem, 10vw, 2.5rem); margin: -0.2rem 0; }
-            .scroll-roots { width: 50px; height: 70px; bottom: 0.3rem; }
-            .scroll-text { bottom: 75px; font-size: 0.45rem; }
-            .root-divider { width: 50px; height: 70px; }
+            .hero-exhibition-title { font-size: 0.5rem; letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+            .hero-venue { font-size: 0.42rem; }
+            .hero-title .viet { font-size: clamp(5rem, 28vw, 6.5rem); }
+            .hero-title .root { font-size: clamp(3.8rem, 22vw, 5rem); }
+            .hero-title .hyphen { font-size: clamp(1.5rem, 8vw, 2rem); margin: -0.1rem 0; }
+            .scroll-roots { width: 40px; height: 65px; bottom: 0.5rem; }
+            .artist-name { font-size: 1rem; }
             .modal-close { top: 1rem; right: 1rem; width: 35px; height: 35px; }
             .modal-info { padding: 1.5rem; }
             .modal-details { grid-template-columns: 1fr; gap: 1rem; }
         }
-
         @media (max-width: 360px) {
-            .hero-title .viet { font-size: 5rem; }
-            .hero-title .root { font-size: 4rem; }
-            .scroll-roots { width: 45px; height: 60px; }
-            .scroll-text { bottom: 65px; }
+            .hero-title .viet { font-size: 4.5rem; }
+            .hero-title .root { font-size: 3.5rem; }
+            .scroll-roots { width: 35px; height: 55px; }
         }
     </style>
 </head>
 <body>
 
-    <main>
+    <canvas id="pixelCanvas"></canvas>
+
+    <div class="page-content">
         <section class="hero">
             <div class="hero-top">
                 <p class="hero-exhibition-title">Creative Photography Exhibition</p>
                 <p class="hero-venue">12 January 2026 · Media Studio · RMIT Vietnam</p>
             </div>
-            
             <h1 class="hero-title">
-                <span class="viet">
-                    <span class="letter">r</span><span class="letter">ễ</span>
-                </span>
+                <span class="viet"><span class="letter">r</span><span class="letter">ễ</span></span>
                 <span class="hyphen">—</span>
-                <span class="root">
-                    <span class="letter">r</span><span class="letter">o</span><span class="letter">o</span><span class="letter">t</span>
-                </span>
+                <span class="root"><span class="letter">r</span><span class="letter">o</span><span class="letter">o</span><span class="letter">t</span></span>
             </h1>
-
-            <span class="scroll-text">Scroll</span>
             <a href="#concept" class="scroll-roots">
-                <svg viewBox="0 0 100 180" preserveAspectRatio="xMidYMin meet">
-                    <path class="root-line main" d="M50 0 Q50 30, 48 50 Q45 80, 50 110 Q55 140, 50 180"/>
-                    <path class="root-line branch-1" d="M48 40 Q35 55, 25 75 Q18 90, 15 110"/>
-                    <path class="root-line branch-1" d="M52 45 Q65 60, 75 80 Q82 95, 85 115"/>
-                    <path class="root-line branch-2" d="M46 70 Q38 85, 30 105 Q25 120, 28 140"/>
-                    <path class="root-line branch-2" d="M54 75 Q62 90, 68 110 Q72 125, 70 145"/>
-                    <path class="root-line branch-3" d="M25 75 Q18 85, 12 100"/>
-                    <path class="root-line branch-3" d="M75 80 Q82 90, 88 105"/>
-                    <path class="root-line tendril-1" d="M30 105 Q22 115, 18 130"/>
-                    <path class="root-line tendril-1" d="M68 110 Q76 120, 80 135"/>
-                    <path class="root-line tendril-2" d="M15 110 Q8 120, 5 135"/>
-                    <path class="root-line tendril-2" d="M85 115 Q92 125, 95 140"/>
-                    <path class="root-line tendril-3" d="M28 140 Q22 155, 20 175"/>
-                    <path class="root-line tendril-3" d="M70 145 Q76 160, 78 180"/>
-                    <path class="root-line tendril-3" d="M50 140 Q45 155, 42 170"/>
-                    <path class="root-line tendril-3" d="M50 145 Q55 160, 58 175"/>
+                <svg viewBox="0 0 80 160" preserveAspectRatio="xMidYMin meet">
+                    <path class="root-line main" d="M40 0 Q40 25, 38 40 Q35 65, 40 90 Q45 115, 40 160"/>
+                    <path class="root-line b1" d="M38 30 Q28 45, 18 60 Q12 72, 10 90"/>
+                    <path class="root-line b1" d="M42 35 Q52 50, 62 65 Q68 77, 70 95"/>
+                    <path class="root-line b2" d="M36 55 Q28 70, 22 85 Q18 98, 20 115"/>
+                    <path class="root-line b2" d="M44 60 Q52 75, 58 90 Q62 103, 60 120"/>
+                    <path class="root-line b3" d="M18 60 Q12 70, 8 82"/>
+                    <path class="root-line b3" d="M62 65 Q68 75, 72 87"/>
+                    <path class="root-line t1" d="M22 85 Q16 95, 12 108"/>
+                    <path class="root-line t1" d="M58 90 Q64 100, 68 113"/>
+                    <path class="root-line t2" d="M10 90 Q5 100, 3 112"/>
+                    <path class="root-line t2" d="M70 95 Q75 105, 77 117"/>
+                    <path class="root-line t3" d="M20 115 Q15 130, 14 150"/>
+                    <path class="root-line t3" d="M60 120 Q65 135, 66 155"/>
+                    <path class="root-line t3" d="M40 110 Q36 128, 34 148"/>
+                    <path class="root-line t3" d="M40 115 Q44 133, 46 153"/>
                 </svg>
             </a>
         </section>
@@ -624,9 +488,9 @@
         <section class="concept" id="concept">
             <div class="container">
                 <p class="concept-text">
-                    Like roots themselves, identities are complex networks: visible and hidden, 
+                    Like roots themselves, identities are complex networks — visible and hidden, 
                     individual and collective, inherited and chosen. Through lens-based artwork, 
-                    we photograph not just what roots look like—but what they feel like.
+                    we photograph not just what roots look like, but what they feel like.
                 </p>
                 <div class="concept-words">
                     <span>re-root</span>
@@ -636,352 +500,234 @@
             </div>
         </section>
 
-        <div class="root-divider">
-            <svg viewBox="0 0 100 180" preserveAspectRatio="xMidYMin meet">
-                <path class="root-line main" d="M50 0 Q50 30, 48 50 Q45 80, 50 110 Q55 140, 50 180"/>
-                <path class="root-line branch-1" d="M48 40 Q35 55, 25 75 Q18 90, 15 110"/>
-                <path class="root-line branch-1" d="M52 45 Q65 60, 75 80 Q82 95, 85 115"/>
-                <path class="root-line branch-2" d="M46 70 Q38 85, 30 105 Q25 120, 28 140"/>
-                <path class="root-line branch-2" d="M54 75 Q62 90, 68 110 Q72 125, 70 145"/>
-                <path class="root-line tendril-1" d="M30 105 Q22 115, 18 130"/>
-                <path class="root-line tendril-1" d="M68 110 Q76 120, 80 135"/>
-                <path class="root-line tendril-3" d="M28 140 Q22 155, 20 175"/>
-                <path class="root-line tendril-3" d="M70 145 Q76 160, 78 180"/>
-            </svg>
-        </div>
+        <div class="divider"><div class="divider-line"></div></div>
 
         <section class="artists" id="artists">
             <div class="container">
                 <h2 class="section-title">Exhibiting Artists</h2>
                 <div class="artists-grid">
-                    
-                    <!-- INSTALLATION ARTISTS -->
-
-                    <div class="artist" 
-                         data-image="https://drive.google.com/thumbnail?id=1Vk9d-jSZEcGr8aZjBvWLUkqr6ZuxClFh&sz=w1000"
-                         data-artist="Florin Schroth"
-                         data-title="Layers of Life"
-                         data-year="2025"
-                         data-medium="Mixed Media Installation, Fiber Sculpture, QR code, Recycled Clothing"
-                         data-link="https://layersoflife.art/">
-                        <span class="artist-name">Florin Schroth</span>
-                        <span class="artist-type">Installation</span>
+                    <div class="artist" data-image="https://drive.google.com/thumbnail?id=1Vk9d-jSZEcGr8aZjBvWLUkqr6ZuxClFh&sz=w1000" data-artist="Florin Schroth" data-title="Layers of Life" data-year="2025" data-medium="Mixed Media Installation, Fiber Sculpture, QR code, Recycled Clothing" data-link="https://layersoflife.art/">
+                        <span class="artist-name">Florin Schroth</span><span class="artist-type">Installation</span>
                     </div>
-
-                    <div class="artist" 
-                         data-image="https://drive.google.com/thumbnail?id=1Ehv1dhMZw5GgPhvMBEqwiU4r2ihT9Tl0&sz=w1000"
-                         data-artist="Le Duc Anh"
-                         data-title="vị-nhà (something that tastes like home)"
-                         data-year="2025"
-                         data-medium="Cyanotype Printing on Bánh Tráng Dừa"
-                         data-link="https://www.figma.com/proto/FYJnC73WkZLdCgvV6BbSNN/v%E1%BB%8B-nh%C3%A0-%7C-something-that-tastes-like-home?page-id=0%3A1&node-id=1-2&p=f&viewport=586%2C45%2C0.09&t=vTRw65smSzvY3T2y-1&scaling=contain&content-scaling=fixed">
-                        <span class="artist-name">Le Duc Anh</span>
-                        <span class="artist-type">Installation</span>
+                    <div class="artist" data-image="https://drive.google.com/thumbnail?id=1Ehv1dhMZw5GgPhvMBEqwiU4r2ihT9Tl0&sz=w1000" data-artist="Le Duc Anh" data-title="vị-nhà (something that tastes like home)" data-year="2025" data-medium="Cyanotype Printing on Bánh Tráng Dừa" data-link="https://www.figma.com/proto/FYJnC73WkZLdCgvV6BbSNN/v%E1%BB%8B-nh%C3%A0-%7C-something-that-tastes-like-home?page-id=0%3A1&node-id=1-2&p=f&viewport=586%2C45%2C0.09&t=vTRw65smSzvY3T2y-1&scaling=contain&content-scaling=fixed">
+                        <span class="artist-name">Le Duc Anh</span><span class="artist-type">Installation</span>
                     </div>
-
-                    <div class="artist" 
-                         data-artist="Ton Nguyen"
-                         data-title="There is a place I can't enter"
-                         data-year="2025"
-                         data-medium="Mixed Media Installation, Customized frame, 1 channel video"
-                         data-link="https://bit.ly/3Z0DDyA">
-                        <span class="artist-name">Ton Nguyen</span>
-                        <span class="artist-type">Installation</span>
+                    <div class="artist" data-artist="Ton Nguyen" data-title="There is a place I can't enter" data-year="2025" data-medium="Mixed Media Installation, Customized frame, 1 channel video" data-link="https://bit.ly/3Z0DDyA">
+                        <span class="artist-name">Ton Nguyen</span><span class="artist-type">Installation</span>
                     </div>
-
-                    <div class="artist" 
-                         data-image="https://drive.google.com/thumbnail?id=1h1DGmSkevBNpgCOuFzxkeDeic3Q3lDpT&sz=w1000"
-                         data-artist="Emma"
-                         data-title="i miss"
-                         data-year="2025"
-                         data-medium="Mixed Media Interactive Installation"
-                         data-link="https://www.figma.com/proto/gENAA9riik8wRYmEvigWGE/Untitled?node-id=54-43&t=usfyrEz9lEjD9hLv-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1">
-                        <span class="artist-name">Emma</span>
-                        <span class="artist-type">Installation</span>
+                    <div class="artist" data-image="https://drive.google.com/thumbnail?id=1h1DGmSkevBNpgCOuFzxkeDeic3Q3lDpT&sz=w1000" data-artist="Emma" data-title="i miss" data-year="2025" data-medium="Mixed Media Interactive Installation" data-link="https://www.figma.com/proto/gENAA9riik8wRYmEvigWGE/Untitled?node-id=54-43&t=usfyrEz9lEjD9hLv-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1">
+                        <span class="artist-name">Emma</span><span class="artist-type">Installation</span>
                     </div>
-
-                    <div class="artist" 
-                         data-image="https://drive.google.com/thumbnail?id=1urtvFltEvhMt9G0H7Dz5annMx6ytBTgm&sz=w1000"
-                         data-artist="alicia ý huỳnh"
-                         data-title="INTRA-SELF, INTER-SELF (Within a Self, Among the Self)"
-                         data-year="2025"
-                         data-medium="Mixed Media Installation, Accordion-fold zine, print, lighting"
-                         data-link="https://aliciayhuynh.wordpress.com/">
-                        <span class="artist-name">alicia ý huỳnh</span>
-                        <span class="artist-type">Installation</span>
+                    <div class="artist" data-image="https://drive.google.com/thumbnail?id=1urtvFltEvhMt9G0H7Dz5annMx6ytBTgm&sz=w1000" data-artist="alicia ý huỳnh" data-title="INTRA-SELF, INTER-SELF (Within a Self, Among the Self)" data-year="2025" data-medium="Mixed Media Installation, Accordion-fold zine, print, lighting" data-link="https://aliciayhuynh.wordpress.com/">
+                        <span class="artist-name">alicia ý huỳnh</span><span class="artist-type">Installation</span>
                     </div>
-
-                    <div class="artist" 
-                         data-image="https://drive.google.com/thumbnail?id=1GIGHyuzs9g8VivzkhaHw9bkhqK4RfYfb&sz=w1000"
-                         data-artist="Bui Ngoc Kieu Anh"
-                         data-title="Toi Tim Ve"
-                         data-year="2025"
-                         data-medium="Mixed Media, Cyanotype on fabric, Rice paper, thread"
-                         data-link="https://drive.google.com/drive/u/1/folders/1lv3Ps2Tnxnfw-Ft2zKNdUFpTsejnPU7y">
-                        <span class="artist-name">Bui Ngoc Kieu Anh</span>
-                        <span class="artist-type">Installation</span>
+                    <div class="artist" data-image="https://drive.google.com/thumbnail?id=1GIGHyuzs9g8VivzkhaHw9bkhqK4RfYfb&sz=w1000" data-artist="Bui Ngoc Kieu Anh" data-title="Toi Tim Ve" data-year="2025" data-medium="Mixed Media, Cyanotype on fabric, Rice paper, thread" data-link="https://drive.google.com/drive/u/1/folders/1lv3Ps2Tnxnfw-Ft2zKNdUFpTsejnPU7y">
+                        <span class="artist-name">Bui Ngoc Kieu Anh</span><span class="artist-type">Installation</span>
                     </div>
-
-                    <div class="artist" 
-                         data-artist="Do Le Gia An"
-                         data-title="Childhood Reclaim"
-                         data-year="2025"
-                         data-medium="Interactive Mixed Media Installation"
-                         data-link="https://www.figma.com/board/Eg3bJHfpbl0pSxiMUsGKZO/Childhood-Reclaim?node-id=0-1&t=3xnxxVmFms3W1TbX-1">
-                        <span class="artist-name">Do Le Gia An</span>
-                        <span class="artist-type">Installation</span>
+                    <div class="artist" data-artist="Do Le Gia An" data-title="Childhood Reclaim" data-year="2025" data-medium="Interactive Mixed Media Installation" data-link="https://www.figma.com/board/Eg3bJHfpbl0pSxiMUsGKZO/Childhood-Reclaim?node-id=0-1&t=3xnxxVmFms3W1TbX-1">
+                        <span class="artist-name">Do Le Gia An</span><span class="artist-type">Installation</span>
                     </div>
-
-                    <!-- DIGITAL IMAGE ARTISTS (with details) -->
-
-                    <div class="artist" 
-                         data-artist="Tran Minh Khue (Kate)"
-                         data-title="自我"
-                         data-year="2025"
-                         data-medium="Interactive Web"
-                         data-link="https://www.figma.com/proto/0NijSFHxkUCbhDcwtC7B85/-Creative-Photo--Asm2_InteractiveExhibition?node-id=59-919&p=f&t=2UZKhAojeEJs6enP-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=59%3A925">
-                        <span class="artist-name">Tran Minh Khue (Kate)</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-artist="Tran Minh Khue (Kate)" data-title="自我" data-year="2025" data-medium="Interactive Web" data-link="https://www.figma.com/proto/0NijSFHxkUCbhDcwtC7B85/-Creative-Photo--Asm2_InteractiveExhibition?node-id=59-919&p=f&t=2UZKhAojeEJs6enP-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=59%3A925">
+                        <span class="artist-name">Tran Minh Khue (Kate)</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" 
-                         data-artist="Nguyen Thu Tra"
-                         data-title="the place I grew up"
-                         data-year="2025"
-                         data-medium="Digital Image, Video"
-                         data-link="https://drive.google.com/drive/folders/11KLFU26VtShCp3ZM05VXu_NG3FO5FEmG?usp=sharing">
-                        <span class="artist-name">Nguyen Thu Tra</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-artist="Nguyen Thu Tra" data-title="the place I grew up" data-year="2025" data-medium="Digital Image, Video" data-link="https://drive.google.com/drive/folders/11KLFU26VtShCp3ZM05VXu_NG3FO5FEmG?usp=sharing">
+                        <span class="artist-name">Nguyen Thu Tra</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" 
-                         data-artist="Nguyen Quynh Huong"
-                         data-title="Strata"
-                         data-year="2025"
-                         data-medium="Digital Image"
-                         data-link="https://rmiteduau-my.sharepoint.com/:f:/g/personal/s4051864_rmit_edu_vn/IgBJyX4ntjWLSKHSW1zo0aJsASvCnaLduDJwF876i-0qdTM">
-                        <span class="artist-name">Nguyen Quynh Huong</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-artist="Nguyen Quynh Huong" data-title="Strata" data-year="2025" data-medium="Digital Image" data-link="https://rmiteduau-my.sharepoint.com/:f:/g/personal/s4051864_rmit_edu_vn/IgBJyX4ntjWLSKHSW1zo0aJsASvCnaLduDJwF876i-0qdTM">
+                        <span class="artist-name">Nguyen Quynh Huong</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" 
-                         data-artist="Mir Tran (Tran Khiet Nghi)"
-                         data-title="the liminal self"
-                         data-year="2025"
-                         data-medium="Digital Image"
-                         data-link="https://drive.google.com/drive/folders/18455wvdVSSTbhBpX-BOopv_07zrEdGp4?usp=sharing">
-                        <span class="artist-name">Mir Tran</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-artist="Mir Tran (Tran Khiet Nghi)" data-title="the liminal self" data-year="2025" data-medium="Digital Image" data-link="https://drive.google.com/drive/folders/18455wvdVSSTbhBpX-BOopv_07zrEdGp4?usp=sharing">
+                        <span class="artist-name">Mir Tran</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" 
-                         data-image="https://drive.google.com/thumbnail?id=1NWgMnyb4xrYNbqv2BqR-B8NRT8y16l6r&sz=w1000"
-                         data-artist="Indochine (Nguyen Huu Nam Duong)"
-                         data-title="Có"
-                         data-year="2025"
-                         data-medium="Digital Image"
-                         data-link="https://duongnam30.pixieset.com/cocreativephotographycollectionduongnam/">
-                        <span class="artist-name">Indochine</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-image="https://drive.google.com/thumbnail?id=1NWgMnyb4xrYNbqv2BqR-B8NRT8y16l6r&sz=w1000" data-artist="Indochine (Nguyen Huu Nam Duong)" data-title="Có" data-year="2025" data-medium="Digital Image" data-link="https://duongnam30.pixieset.com/cocreativephotographycollectionduongnam/">
+                        <span class="artist-name">Indochine</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" 
-                         data-image="https://drive.google.com/thumbnail?id=16M3DKsIcBYOuNlYYO7-Gm2vTV9rL40th&sz=w1000"
-                         data-artist="Nguyễn Anh Thư"
-                         data-title="Fear of being Wrong"
-                         data-year="2025"
-                         data-medium="Digital Image"
-                         data-link="https://drive.google.com/file/d/12IMPLRM3P2YbXhXuNObREKCRlMyorIq1/view?usp=sharing">
-                        <span class="artist-name">Nguyễn Anh Thư</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-image="https://drive.google.com/thumbnail?id=16M3DKsIcBYOuNlYYO7-Gm2vTV9rL40th&sz=w1000" data-artist="Nguyễn Anh Thư" data-title="Fear of being Wrong" data-year="2025" data-medium="Digital Image" data-link="https://drive.google.com/file/d/12IMPLRM3P2YbXhXuNObREKCRlMyorIq1/view?usp=sharing">
+                        <span class="artist-name">Nguyễn Anh Thư</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <!-- DIGITAL IMAGE ARTISTS (link only - opens directly) -->
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://drive.google.com/file/d/1lXMdf_RPun5xfRQsJKogZ43CCLJVlj-h/view?usp=sharing">
-                        <span class="artist-name">Cléo Migette</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/1lXMdf_RPun5xfRQsJKogZ43CCLJVlj-h/view?usp=sharing">
+                        <span class="artist-name">Cléo Migette</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://drive.google.com/file/d/1dRqFso8PG8QeI-W2cnLGSnpxvltWiTmK/view?usp=sharing">
-                        <span class="artist-name">Agathe Wales</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/1dRqFso8PG8QeI-W2cnLGSnpxvltWiTmK/view?usp=sharing">
+                        <span class="artist-name">Agathe Wales</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://drive.google.com/drive/folders/1miAA7TzMJ1Mtm7naGJNK_06m8y4qVGmG?usp=share_link">
-                        <span class="artist-name">Mélissa Holley</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://drive.google.com/drive/folders/1miAA7TzMJ1Mtm7naGJNK_06m8y4qVGmG?usp=share_link">
+                        <span class="artist-name">Mélissa Holley</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://drive.google.com/file/d/14Z1fWnef6jDyhro6aF5xxd6_yGa1scUK/view?usp=sharing">
-                        <span class="artist-name">Le Ngoc Van Anh</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/14Z1fWnef6jDyhro6aF5xxd6_yGa1scUK/view?usp=sharing">
+                        <span class="artist-name">Le Ngoc Van Anh</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://drive.google.com/file/d/1w7tPY4d40g-nxdxSQHDKDfGBdJXQPSrJ/view?usp=sharing">
-                        <span class="artist-name">Tran Minh Khoa</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/1w7tPY4d40g-nxdxSQHDKDfGBdJXQPSrJ/view?usp=sharing">
+                        <span class="artist-name">Tran Minh Khoa</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://www.canva.com/design/DAG-EHFzDcQ/nBcSRYPiOyR1S_egsRy3IQ/edit">
-                        <span class="artist-name">Sin Yi Liong</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-EHFzDcQ/nBcSRYPiOyR1S_egsRy3IQ/edit">
+                        <span class="artist-name">Sin Yi Liong</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://www.canva.com/design/DAG-MGIjfnE/KKIaS735dQjijVM6_0Mk9A/edit">
-                        <span class="artist-name">Nguyen Anh Thu</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-MGIjfnE/KKIaS735dQjijVM6_0Mk9A/edit">
+                        <span class="artist-name">Nguyen Anh Thu</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://www.canva.com/design/DAG-LPnal6A/7719bpzii_f64_EIfQ7z5g/edit">
-                        <span class="artist-name">Ho Ngoc Truc Linh</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-LPnal6A/7719bpzii_f64_EIfQ7z5g/edit">
+                        <span class="artist-name">Ho Ngoc Truc Linh</span><span class="artist-type">Digital Image</span>
                     </div>
-
-                    <div class="artist" data-simple="true"
-                         data-link="https://www.canva.com/design/DAG-JceNJnI/utD3zGEBRjGs16MTp4LD2w/edit">
-                        <span class="artist-name">Le Bich Thao</span>
-                        <span class="artist-type">Digital Image</span>
+                    <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-JceNJnI/utD3zGEBRjGs16MTp4LD2w/edit">
+                        <span class="artist-name">Le Bich Thao</span><span class="artist-type">Digital Image</span>
                     </div>
-
                 </div>
             </div>
         </section>
+
+        <div class="divider"><div class="divider-line"></div></div>
 
         <section class="info">
             <div class="container">
                 <div class="info-grid">
-                    <div class="info-block">
-                        <h3>Date & Time</h3>
-                        <p>Monday, 12 January 2026<br>Opening at 3PM</p>
-                    </div>
-                    <div class="info-block">
-                        <h3>Location</h3>
-                        <p>Media Studio<br>RMIT University Vietnam<br>Saigon South Campus</p>
-                    </div>
-                    <div class="info-block">
-                        <h3>Course</h3>
-                        <p>Creative Photography<br>Digital Media Elective<br>Semester 3, 2025</p>
-                    </div>
-                    <div class="info-block">
-                        <h3>Contact</h3>
-                        <p><a href="mailto:bin.youn@rmit.edu.vn">bin.youn@rmit.edu.vn</a></p>
-                    </div>
+                    <div class="info-block"><h3>Date & Time</h3><p>Monday, 12 January 2026<br>Opening at 3PM</p></div>
+                    <div class="info-block"><h3>Location</h3><p>Media Studio<br>RMIT University Vietnam<br>Saigon South Campus</p></div>
+                    <div class="info-block"><h3>Course</h3><p>Creative Photography<br>Digital Media Elective<br>Semester 3, 2025</p></div>
+                    <div class="info-block"><h3>Contact</h3><p><a href="mailto:bin.youn@rmit.edu.vn">bin.youn@rmit.edu.vn</a></p></div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p class="footer-text">
-                School of Communication & Design · <a href="https://rmit.edu.vn" target="_blank">RMIT University Vietnam</a>
-            </p>
-        </div>
-    </footer>
+        <footer>
+            <div class="container">
+                <p class="footer-text">School of Communication & Design · <a href="https://rmit.edu.vn" target="_blank">RMIT University Vietnam</a></p>
+            </div>
+        </footer>
+    </div>
 
     <!-- Artist Modal -->
     <div class="modal-overlay" id="artistModal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose"></button>
             <img class="modal-image" id="modalImage" src="" alt="">
-            <div class="modal-info" id="modalInfo">
+            <div class="modal-info">
                 <h2 class="modal-artist-name" id="modalArtist"></h2>
                 <p class="modal-work-title" id="modalTitle"></p>
                 <div class="modal-details" id="modalDetails">
-                    <div class="modal-detail-item">
-                        <span class="modal-detail-label">Year</span>
-                        <span class="modal-detail-value" id="modalYear"></span>
-                    </div>
-                    <div class="modal-detail-item">
-                        <span class="modal-detail-label">Medium</span>
-                        <span class="modal-detail-value" id="modalMedium"></span>
-                    </div>
+                    <div class="modal-detail-item"><span class="modal-detail-label">Year</span><span class="modal-detail-value" id="modalYear"></span></div>
+                    <div class="modal-detail-item"><span class="modal-detail-label">Medium</span><span class="modal-detail-value" id="modalMedium"></span></div>
                 </div>
-                <a class="modal-link" id="modalLink" href="#" target="_blank">
-                    View Full Work
-                    <svg viewBox="0 0 24 24">
-                        <line x1="7" y1="17" x2="17" y2="7"></line>
-                        <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                </a>
+                <a class="modal-link" id="modalLink" href="#" target="_blank">View Full Work <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
             </div>
         </div>
     </div>
 
     <script>
+    (function() {
+        const canvas = document.getElementById('pixelCanvas');
+        const ctx = canvas.getContext('2d');
+        const PIXEL = 6, GAP = 2, CELL = PIXEL + GAP;
+        let cols, rows, rootGrid, time = 0, gridPhase = [], rootData = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            cols = Math.ceil(canvas.width / CELL);
+            rows = Math.ceil(canvas.height / CELL);
+            buildRoots();
+        }
+
+        function growBranch(col, row, length, spread, maxThick, results) {
+            let c = col, r = row;
+            for (let i = 0; i < length; i++) {
+                const thick = Math.max(0, Math.round(maxThick * (1 - i / length * 0.7)));
+                for (let t = -thick; t <= thick; t++) {
+                    const cc = c + t;
+                    if (cc >= 0 && cc < cols && r >= 0 && r < rows) {
+                        const key = cc + ',' + r;
+                        if (!rootGrid.has(key)) { rootGrid.add(key); results.push({ col: cc, row: r, depth: i / length }); }
+                    }
+                }
+                r += 1;
+                c += (Math.random() < 0.45) ? (Math.random() < 0.5 ? -1 : 1) : 0;
+                if (Math.random() < spread && i > 4) {
+                    growBranch(c + (Math.random() < 0.5 ? -2 : 2), r, Math.floor(length * 0.35), spread * 0.35, Math.max(0, maxThick - 1), results);
+                }
+                if (r >= rows) break;
+            }
+        }
+
+        function buildRoots() {
+            rootGrid = new Set(); rootData = [];
+            gridPhase = new Float32Array(cols * rows);
+            for (let i = 0; i < gridPhase.length; i++) gridPhase[i] = Math.random() * Math.PI * 2;
+            const cx = Math.floor(cols / 2), ml = rows;
+            [
+                { c: cx, l: ml, s: 0.06, t: 3 },
+                { c: cx - 5, l: ml * 0.88, s: 0.05, t: 2 },
+                { c: cx + 5, l: ml * 0.88, s: 0.05, t: 2 },
+                { c: cx - 12, l: ml * 0.65, s: 0.04, t: 1 },
+                { c: cx + 12, l: ml * 0.65, s: 0.04, t: 1 },
+                { c: cx - 20, l: ml * 0.45, s: 0.035, t: 0 },
+                { c: cx + 20, l: ml * 0.45, s: 0.035, t: 0 },
+                { c: cx - 3, l: ml * 0.92, s: 0.045, t: 2 },
+                { c: cx + 3, l: ml * 0.92, s: 0.045, t: 2 },
+            ].forEach(s => growBranch(s.c, 0, Math.floor(s.l), s.s, s.t, rootData));
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            time += 0.012;
+            const scrollY = window.scrollY;
+            const docH = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPct = docH > 0 ? scrollY / docH : 0;
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const a = 0.025 + Math.sin(time * 0.4 + gridPhase[r * cols + c]) * 0.01;
+                    if (a > 0.005) { ctx.fillStyle = `rgba(240,239,232,${a})`; ctx.fillRect(c * CELL, r * CELL, PIXEL, PIXEL); }
+                }
+            }
+
+            const growReveal = 0.15 + scrollPct * 0.85;
+            for (let i = 0; i < rootData.length; i++) {
+                const rd = rootData[i];
+                if (rd.depth >= growReveal) continue;
+                const fadeEdge = Math.min(1, (growReveal - rd.depth) * 8);
+                const breathe = Math.sin(time * (0.6 + rd.depth * 0.8) + rd.col * 0.5 + rd.row * 0.3) * 0.25;
+                const alpha = (0.25 + (1 - rd.depth) * 0.55 + breathe) * fadeEdge;
+                if (alpha > 0.01) {
+                    const g = Math.floor(70 + (1 - rd.depth) * 100);
+                    ctx.fillStyle = `rgba(${Math.floor(15 + rd.depth * 25)},${g},${Math.floor(25 + rd.depth * 20)},${alpha})`;
+                    ctx.fillRect(rd.col * CELL, rd.row * CELL, PIXEL, PIXEL);
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', resize);
+        resize(); draw();
+    })();
+
+    (function() {
         const modal = document.getElementById('artistModal');
-        const modalClose = document.getElementById('modalClose');
         const modalImage = document.getElementById('modalImage');
         const modalDetails = document.getElementById('modalDetails');
-        const artists = document.querySelectorAll('.artist');
 
-        artists.forEach(artist => {
-            artist.addEventListener('click', () => {
-                const link = artist.dataset.link;
-                const isSimple = artist.dataset.simple === 'true';
-
-                // For simple link artists, just open the link directly
-                if (isSimple && link) {
-                    window.open(link, '_blank');
-                    return;
-                }
-
-                const artistName = artist.dataset.artist;
-                if (!artistName) return;
-
-                const image = artist.dataset.image;
-                const title = artist.dataset.title;
-                const year = artist.dataset.year;
-                const medium = artist.dataset.medium;
-
-                // Populate modal
-                document.getElementById('modalArtist').textContent = artistName;
-                document.getElementById('modalTitle').textContent = title || '';
-                document.getElementById('modalYear').textContent = year || '2025';
-                document.getElementById('modalMedium').textContent = medium || '—';
+        document.querySelectorAll('.artist').forEach(a => {
+            a.addEventListener('click', () => {
+                const link = a.dataset.link;
+                if (a.dataset.simple === 'true' && link) { window.open(link, '_blank'); return; }
+                const name = a.dataset.artist; if (!name) return;
+                document.getElementById('modalArtist').textContent = name;
+                document.getElementById('modalTitle').textContent = a.dataset.title || '';
+                document.getElementById('modalYear').textContent = a.dataset.year || '2025';
+                document.getElementById('modalMedium').textContent = a.dataset.medium || '—';
                 document.getElementById('modalLink').href = link || '#';
-
-                // Handle image
-                if (image) {
-                    modalImage.src = image;
-                    modalImage.style.display = 'block';
-                } else {
-                    modalImage.style.display = 'none';
-                }
-
-                // Show/hide title and details
-                document.getElementById('modalTitle').style.display = title ? 'block' : 'none';
-                modalDetails.style.display = (year || medium) ? 'grid' : 'none';
-
-                // Show modal
-                modal.classList.add('active');
-                document.body.classList.add('modal-open');
+                if (a.dataset.image) { modalImage.src = a.dataset.image; modalImage.style.display = 'block'; }
+                else { modalImage.style.display = 'none'; }
+                document.getElementById('modalTitle').style.display = a.dataset.title ? 'block' : 'none';
+                modalDetails.style.display = (a.dataset.year || a.dataset.medium) ? 'grid' : 'none';
+                modal.classList.add('active'); document.body.classList.add('modal-open');
             });
         });
 
-        // Close modal
-        modalClose.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.classList.remove('modal-open');
-        }
+        function close() { modal.classList.remove('active'); document.body.classList.remove('modal-open'); }
+        document.getElementById('modalClose').addEventListener('click', close);
+        modal.addEventListener('click', e => { if (e.target === modal) close(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
     </script>
-
 </body>
 </html>
