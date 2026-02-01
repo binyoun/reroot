@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rễ-root | Creative Photography Exhibition</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+           <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?
+        family=Handjet:wght@100..900&
+        family=Syne:wght@400;500;600;700;800&
+        family=Space+Mono:wght@400;700&
+        display=swap" rel="stylesheet">
+
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -88,25 +94,27 @@
         .hero-title {
             text-align: center;
             line-height: 0.9;
+            font-kerning: none;
+            text-rendering: geometricPrecision;
         }
 
         .hero-title .viet {
             display: block;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Handjet', monospace;
             font-size: clamp(6.5rem, 26vw, 19rem);
             font-weight: 800;
             color: var(--green-light);
-            letter-spacing: -0.04em;
+            letter-spacing: 0.02em;
             margin-bottom: 0;
         }
 
         .hero-title .root {
             display: block;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Handjet', monospace;
             font-size: clamp(5rem, 20vw, 14rem);
             font-weight: 700;
             color: var(--white);
-            letter-spacing: -0.03em;
+            letter-spacing: 0.015em;
         }
 
         .letter {
