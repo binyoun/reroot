@@ -124,3 +124,71 @@ Tomlinson, C. A. (2014). The differentiated classroom: Responding to the needs o
 Vygotsky, L. S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press.
 <img width="504" height="626" alt="image" src="https://github.com/user-attachments/assets/41a904f6-2990-403c-8454-b609c2a094f3" />
 <img width="504" height="626" alt="image" src="https://github.com/user-attachments/assets/41a904f6-2990-403c-8454-b609c2a094f3" />
+
+
+Digital Assessment Project Report
+
+1: Reflection on Course Revision Process
+This digital assessment project documents the redesign of VART3670 Creative Photography, transforming a traditional portfolio-based photography course into an exhibition-centered, blended learning experience guided by the pedagogical framework I call "rễ-root."
+Context and Rationale for Revision
+Before this revision, the course followed a conventional structure: weekly technique demonstrations, individual portfolio development, and digital submission of final images. While technically sound, this approach limited opportunities for authentic professional practice and cross-disciplinary collaboration. As an interdisciplinary multimedia artist joining RMIT Vietnam in March 2025, I recognized the potential to reimagine creative photography education through spatial, installation-based, and participatory approaches.
+The revision centered on three key changes:
+1.	Replacing the traditional portfolio submission with a physical exhibition in the Media Studio (1.1.34), creating an authentic assessment context where students experience professional exhibition practices including installation, spatial arrangement, and public presentation.
+2.	Integrating a Four-week artist workshop series (Weeks 7, 8, 10, and 11, with Week 9 designated as Christmas Break in Semester 3 or Self-Learning Week 7 in Semesters 1 and 2) featuring practicing photographers from Vietnam and Korea: Duy-Phuong Le Nguyen (identity and family memory), Pham Tuan Ngoc (alternative photographic processes), Tuna Lee(archival digital pratice-abased research and art), and Ilam Stephen Jang (thinking photography methodology).
+3.	Implementing the "rễ-root" framework as both conceptual anchor and exhibition theme. Drawing from Vietnamese ("rễ" meaning root) and Korean cosmological thinking, this framework invites students to explore identity as complex networks: visible and hidden, individual and collective, inherited and chosen.
+Technology Integration Strategy
+A purposeful technology ecosystem supports the blended learning design, structured according to Puentedura's (2006) SAMR model. Canvas LMS serves as the central hub for materials and submissions (Substitution), while Padlet and Microsoft Teams provide enhanced peer feedback and remote participation (Augmentation). Miro Board functions as a dynamic collaborative space enabling new forms of resource curation, consultation booking, and exhibition planning (Modification). Most significantly, the GitHub Pages exhibition website (binyoun.github.io/reroot/) represents Redefinition, extending student work beyond classroom boundaries into permanent public portfolios accessible to global audiences.
+Insights on Diverse Learner Needs
+A significant insight emerged from teaching 41 students across diverse programs including Digital Media, Communication Design, Marketing, and Business. Students from non-design backgrounds initially struggled with conceptual development and spatial thinking inherent in installation work. To address this, I implemented differentiated pathways aligned with Universal Design for Learning principles (Rose & Meyer, 2002): Option A (installation-based sharing) and Option B (slide-based presentation with minimal supportive text). This flexibility enabled Business students to leverage their communication strengths while still engaging with exhibition concepts.
+The strategic placement of Week 9 as a break period provides crucial independent development time between Workshop 1 and Workshop 2, allowing students to process artist talk insights and advance their moodboards and shooting before receiving further structured guidance.
+Cross-disciplinary peer learning proved unexpectedly valuable. During the Week 12 exhibition, I observed Marketing students helping Design students articulate their artistic statements more clearly, while Design students guided Business students in spatial arrangement decisions. This organic collaboration exemplifies Vygotsky's (1978) zone of proximal development operating across disciplinary boundaries.
+2: University Pedagogy and Course Design
+RMIT Signature Pedagogy: Active, Authentic, Applied (AAA)
+The revised course embeds RMIT's AAA pedagogy throughout:
+Principle	Implementation
+Active	Hands-on workshops (light painting, mixed media, glitch art with physical DIY material and Audacity); peer feedback via Padlet; interactive Q&A with visiting artists
+Authentic	Physical exhibition replicates professional gallery practice; artist talks provide industry mentorship; online exhibition (GitHub Pages) creates public portfolio
+Applied	Visual journals document real creative process; final documentation mirrors artist statement conventions; consultation slots simulate professional mentorship
+
+Constructive Alignment
+Following Biggs and Tang's (2011) constructive alignment framework, the course ensures coherence between intended learning outcomes, teaching activities, and assessment tasks. For example, CLO5 ("Demonstrate a unique and individual approach toward creative photography through an experimental process") aligns with the ideation workshops using Miro Board (teaching activity), the rễ-root conceptual framework exploration (learning activity), and the final exhibition at Media Studio (assessment task) where students must articulate and present their unique photographic vision.
+Community of Inquiry Framework
+The blended learning design draws on Garrison, Anderson, and Archer's (2000) Community of Inquiry framework, with technology tools strategically supporting each presence:
+Presence	Synchronous	Asynchronous
+Teaching	Artist talks (Weeks 7, 8, 10, 11), live demonstrations, exhibition facilitation	Miro board resources, Canvas modules, email consultations
+Social	Peer critiques, exhibition opening, cross-section collaboration	Padlet sharing, Teams booking, Instagram community
+Cognitive	Ideation workshops, physical artwork viewing (10 originals)	Pre-class research, working statements, moodboard development
+
+3: Evaluation Plan
+Evaluation Framework
+The evaluation employs Kirkpatrick's four-level model adapted for educational contexts, combined with ARCS motivation indicators (Keller, 2010):
+Level	Indicators	Data Collection
+Reaction	Student satisfaction, engagement with artist talks	Post-course survey, attendance tracking, Padlet contribution counts
+Learning	Achievement of CLOs, skill development	Rubric scores, portfolio quality, peer feedback analysis
+Behavior	Application of techniques, exhibition professionalism	Observation during exhibition, documentation quality
+Results	Long-term impact, portfolio development	Follow-up survey, GitHub Pages analytics, student testimonials
+
+Preliminary Findings
+Initial data from the Semester 3-2025 implementation indicates positive outcomes:
+•	Exhibition Participation: 31 students participated in the physical exhibition at Media Studio, with both installation-based (Option A) and slide-based (Option B) presentations represented.
+•	Artist Talk Engagement: Strong attendance across all three workshops, with particularly high engagement during Pham Tuan Ngoc's Week 10 session where students examined 10 original physical artworks.
+•	Technology Adoption: High utilization of Miro Board for consultation booking and reference sharing; active Padlet contributions for peer feedback; successful Teams streaming for remote participation.
+•	Cross-Disciplinary Learning: Observable peer learning between Business/Marketing and Design students during exhibition installation and critique sessions.
+•	Digital Extension: The online exhibition website (binyoun.github.io/reroot/) provides permanent documentation extending student visibility beyond the classroom.
+Future Refinements
+Based on this iteration, future refinements will include:
+•	Earlier introduction of the rễ-root framework (Week 1) with deeper conceptual scaffolding
+•	Additional pre-workshop preparation materials on Miro Board for non-design students
+•	Structured peer feedback rubric for Padlet activities to strengthen social learning
+•	Video documentation of exhibition installation process as a learning resource
+•	Longitudinal tracking of student portfolio development via GitHub Pages analytics
+
+References
+Biggs, J., & Tang, C. (2011). Teaching for quality learning at university: What the student does (4th ed.). Open University Press.
+Garrison, D. R., Anderson, T., & Archer, W. (2000). Critical inquiry in a text-based environment: Computer conferencing in higher education. The Internet and Higher Education, 2(2-3), 87-105.
+Keller, J. M. (2010). Motivational design for learning and performance: The ARCS model approach. Springer.
+Puentedura, R. R. (2006). Transformation, technology, and education. http://hippasus.com/resources/tte/
+Rose, D. H., & Meyer, A. (2002). Teaching every student in the digital age: Universal design for learning. ASCD.
+Vygotsky, L. S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press.
+<img width="468" height="628" alt="image" src="https://github.com/user-attachments/assets/023b2d04-448b-402a-bc07-2f97efb4270f" />
+<img width="468" height="628" alt="image" src="https://github.com/user-attachments/assets/023b2d04-448b-402a-bc07-2f97efb4270f" />
