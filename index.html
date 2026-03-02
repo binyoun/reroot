@@ -46,9 +46,7 @@
         .page-content { position: relative; z-index: 1; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-        /* ======================== */
-        /* NAV                      */
-        /* ======================== */
+        /* NAV */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -69,12 +67,7 @@
             letter-spacing: 0.05em;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a {
             font-size: 0.65rem;
             letter-spacing: 0.15em;
@@ -83,12 +76,9 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
-
         .nav-links a:hover { color: var(--green-bright); }
 
-        /* ======================== */
-        /* HERO                     */
-        /* ======================== */
+        /* HERO */
         .hero {
             min-height: 100vh;
             min-height: 100svh;
@@ -128,11 +118,7 @@
             color: var(--green-bright);
         }
 
-        .hero-title {
-            text-align: center;
-            line-height: 0.9;
-            font-kerning: none;
-        }
+        .hero-title { text-align: center; line-height: 0.9; font-kerning: none; }
 
         .hero-title .viet {
             display: block;
@@ -172,17 +158,12 @@
             animation: fadeIn 1s ease 0.8s forwards;
         }
 
-        .letter {
-            display: inline-block;
-            opacity: 0;
-            animation: pixelReveal 0.8s steps(6) forwards;
-        }
+        .letter { display: inline-block; opacity: 0; animation: pixelReveal 0.8s steps(6) forwards; }
 
         @keyframes pixelReveal {
             0% { opacity: 0; transform: translateY(12px); filter: blur(4px); }
             100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
-
         @keyframes pixelBreathe { 0%, 100% { opacity: 1; } 45% { opacity: 0.7; } 90% { opacity: 0.6; } }
         @keyframes pixelShift { 0%, 100% { opacity: 1; transform: translate(0,0); } 50% { opacity: 0.6; transform: translate(-1px,1px); } }
 
@@ -206,7 +187,6 @@
             cursor: pointer;
             text-decoration: none;
         }
-
         .scroll-roots svg { width: 100%; height: 100%; overflow: visible; }
         .root-line { fill: none; stroke: var(--green-light); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 200; stroke-dashoffset: 200; animation: growRoot 3s ease-in-out infinite; }
         .root-line.main { stroke-width: 2; animation-delay: 0s; }
@@ -215,9 +195,7 @@
         @keyframes growRoot { 0% { stroke-dashoffset: 200; opacity: 0.3; } 50% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: -200; opacity: 0.3; } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* ======================== */
-        /* SECTIONS                 */
-        /* ======================== */
+        /* SECTIONS */
         section { padding: 6rem 0; }
 
         .section-label {
@@ -251,19 +229,9 @@
             color: var(--white-soft);
             margin-bottom: 1.5rem;
         }
+        .philosophy-text em { color: var(--green-bright); font-style: normal; }
 
-        .philosophy-text em {
-            color: var(--green-bright);
-            font-style: normal;
-        }
-
-        .philosophy-keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 3rem;
-        }
-
+        .philosophy-keywords { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 3rem; }
         .keyword {
             font-family: 'Space Mono', monospace;
             font-size: 0.6rem;
@@ -275,69 +243,30 @@
             background: var(--green-pale);
             transition: all 0.3s ease;
         }
-
-        .keyword:hover {
-            background: var(--green);
-            color: var(--bg-deep);
-        }
+        .keyword:hover { background: var(--green); color: var(--bg-deep); }
 
         /* DIVIDER */
         .divider { text-align: center; padding: 2rem 0; }
         .divider-line { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--green), transparent); margin: 0 auto; }
 
         /* ARTIST TALKS */
-        .talks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
+        .talks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
         .talk-card {
             background: var(--bg-card);
             border: 1px solid var(--white-faint);
             padding: 1.5rem;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: block;
         }
-
-        .talk-card:hover {
-            border-color: var(--green);
-            background: var(--bg-hover);
-            transform: translateY(-2px);
-        }
-
-        .talk-card .talk-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.5rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--white-dim);
-            margin-bottom: 0.8rem;
-        }
-
-        .talk-card .talk-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .talk-card .talk-meta {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.55rem;
-            color: var(--green-light);
-            letter-spacing: 0.1em;
-        }
+        .talk-card:hover { border-color: var(--green); background: var(--bg-hover); transform: translateY(-2px); }
+        .talk-card .talk-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 0.8rem; }
+        .talk-card .talk-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; line-height: 1.4; }
+        .talk-card .talk-meta { font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--green-light); letter-spacing: 0.1em; }
 
         /* EXHIBITIONS */
-        .exhibition-hero {
+        .exhibition-entry {
             background: var(--bg-card);
             border: 1px solid var(--white-faint);
-            padding: 3rem;
             margin-top: 2rem;
         }
 
@@ -345,9 +274,10 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 2rem;
+            padding: 2.5rem;
             flex-wrap: wrap;
             gap: 1.5rem;
+            border-bottom: 1px solid var(--white-faint);
         }
 
         .exhibition-info h3 {
@@ -358,7 +288,6 @@
             letter-spacing: 0.03em;
             margin-bottom: 0.5rem;
         }
-
         .exhibition-info .ex-date {
             font-family: 'Space Mono', monospace;
             font-size: 0.6rem;
@@ -367,7 +296,6 @@
             color: var(--white-dim);
             margin-bottom: 1rem;
         }
-
         .exhibition-info .ex-desc {
             font-family: 'Syne', sans-serif;
             font-size: 1rem;
@@ -376,38 +304,14 @@
             max-width: 500px;
         }
 
-        .exhibition-stats {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Handjet', monospace;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--green-bright);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.5rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--white-dim);
-            margin-top: 0.3rem;
-        }
+        .exhibition-stats { display: flex; gap: 2rem; }
+        .stat { text-align: center; }
+        .stat-number { font-family: 'Handjet', monospace; font-size: 2.5rem; font-weight: 600; color: var(--green-bright); line-height: 1; }
+        .stat-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-dim); margin-top: 0.3rem; }
 
         /* ARCHIVE GALLERY */
-        .archive-gallery {
-            margin-top: 2rem;
-        }
-
-        .archive-gallery h4 {
+        .archive-preview { padding: 2rem 2.5rem; border-bottom: 1px solid var(--white-faint); }
+        .archive-preview h4 {
             font-family: 'Space Mono', monospace;
             font-size: 0.55rem;
             letter-spacing: 0.3em;
@@ -416,12 +320,7 @@
             margin-bottom: 1rem;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.8rem;
-        }
-
+        .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; }
         .gallery-thumb {
             aspect-ratio: 1;
             overflow: hidden;
@@ -430,273 +329,164 @@
             border: 1px solid var(--white-faint);
             transition: all 0.3s ease;
         }
+        .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; filter: grayscale(30%); }
+        .gallery-thumb:hover { border-color: var(--green); z-index: 10; }
+        .gallery-thumb:hover img { transform: scale(1.05); filter: grayscale(0%); }
 
-        .gallery-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-            filter: grayscale(30%);
+        /* ARTISTS GRID */
+        .artists-section { padding: 2.5rem; }
+        .artists-section h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            margin-bottom: 1.5rem;
         }
 
-        .gallery-thumb:hover {
-            border-color: var(--green);
-            z-index: 10;
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0 2.5rem;
         }
 
-        .gallery-thumb:hover img {
-            transform: scale(1.05);
-            filter: grayscale(0%);
+        .artist {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--white-faint);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            cursor: pointer;
+            transition: all 0.35s ease;
         }
+        .artist:hover { border-bottom-color: var(--green); padding-left: 0.5rem; }
+        .artist:hover .artist-name { color: var(--green-light); }
+
+        .artist-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white-soft);
+            transition: all 0.35s ease;
+            letter-spacing: 0.01em;
+        }
+        .artist-type {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white-dim);
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 15, 12, 0.96);
+            z-index: 1000; opacity: 0; visibility: hidden;
+            transition: all 0.4s ease;
+            display: flex; align-items: center; justify-content: center; padding: 2rem;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            background: var(--bg-card); border: 1px solid var(--white-faint);
+            max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto;
+            position: relative; transform: translateY(30px) scale(0.95); transition: transform 0.4s ease;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
+        .modal-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px;
+            background: none; border: 1px solid var(--white-faint);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; z-index: 10;
+        }
+        .modal-close:hover { border-color: var(--green-light); }
+        .modal-close::before, .modal-close::after { content: ''; position: absolute; width: 16px; height: 1px; background: var(--white); }
+        .modal-close::before { transform: rotate(45deg); }
+        .modal-close::after { transform: rotate(-45deg); }
+        .modal-image { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; background: #111; }
+        .modal-info { padding: 2.5rem; }
+        .modal-artist-name { font-family: 'Handjet', monospace; font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--white); letter-spacing: 0.02em; }
+        .modal-work-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 400; color: var(--green-light); margin-bottom: 2rem; }
+        .modal-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--white-faint); }
+        .modal-detail-item { display: flex; flex-direction: column; gap: 0.3rem; }
+        .modal-detail-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white-dim); }
+        .modal-detail-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 500; color: var(--white-soft); }
+        .modal-link { display: inline-flex; align-items: center; gap: 0.75rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); text-decoration: none; padding: 0.9rem 1.3rem; border: 1px solid var(--green); transition: all 0.3s ease; }
+        .modal-link:hover { background: var(--green); color: var(--bg-deep); }
+        .modal-link svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
 
         /* LIGHTBOX */
         .lightbox {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(10, 15, 12, 0.95);
             z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
             transition: all 0.3s ease;
             padding: 2rem;
         }
-
-        .lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 85vh;
-            object-fit: contain;
-            border: 1px solid var(--white-faint);
-        }
-
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox img { max-width: 90%; max-height: 85vh; object-fit: contain; border: 1px solid var(--white-faint); }
         .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: none;
-            border: 1px solid var(--white-faint);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            position: absolute; top: 2rem; right: 2rem; width: 50px; height: 50px;
+            background: none; border: 1px solid var(--white-faint);
+            cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;
         }
-
         .lightbox-close:hover { border-color: var(--green-light); }
         .lightbox-close::before, .lightbox-close::after { content: ''; position: absolute; width: 20px; height: 1px; background: var(--white); }
         .lightbox-close::before { transform: rotate(45deg); }
         .lightbox-close::after { transform: rotate(-45deg); }
-
         .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: none;
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; background: none;
             border: 1px solid var(--white-faint);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            color: var(--white);
-            font-size: 1.5rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; color: var(--white); font-size: 1.5rem;
         }
-
         .lightbox-nav:hover { border-color: var(--green-light); }
         .lightbox-prev { left: 2rem; }
         .lightbox-next { right: 2rem; }
 
         /* RESOURCES */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
         .resource-card {
-            background: var(--bg-card);
-            border: 1px solid var(--white-faint);
-            padding: 2rem;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: all 0.3s ease;
+            background: var(--bg-card); border: 1px solid var(--white-faint);
+            padding: 2rem; text-decoration: none; display: flex; flex-direction: column; gap: 1rem; transition: all 0.3s ease;
         }
-
-        .resource-card:hover {
-            border-color: var(--green);
-            background: var(--bg-hover);
-        }
-
-        .resource-card .res-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--green);
-            color: var(--green-light);
-        }
-
-        .resource-card .res-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            stroke-width: 1.5;
-            fill: none;
-        }
-
-        .resource-card .res-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .resource-card .res-desc {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--white-dim);
-            line-height: 1.6;
-        }
+        .resource-card:hover { border-color: var(--green); background: var(--bg-hover); }
+        .resource-card .res-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--green); color: var(--green-light); }
+        .resource-card .res-icon svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+        .resource-card .res-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--white); }
+        .resource-card .res-desc { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--white-dim); line-height: 1.6; }
 
         /* FACULTY */
-        .faculty-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .faculty-card {
-            padding: 2rem;
-            border: 1px solid var(--white-faint);
-            background: var(--bg-card);
-        }
-
-        .faculty-card .fac-role {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.5rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--green-light);
-            margin-bottom: 0.8rem;
-        }
-
-        .faculty-card .fac-name {
-            font-family: 'Handjet', monospace;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 1rem;
-            letter-spacing: 0.02em;
-        }
-
-        .faculty-card .fac-email {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--white-dim);
-            text-decoration: none;
-            border-bottom: 1px solid var(--white-faint);
-            transition: all 0.3s ease;
-        }
-
-        .faculty-card .fac-email:hover {
-            color: var(--green-light);
-            border-color: var(--green-light);
-        }
+        .faculty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .faculty-card { padding: 2rem; border: 1px solid var(--white-faint); background: var(--bg-card); }
+        .faculty-card .fac-role { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.8rem; }
+        .faculty-card .fac-name { font-family: 'Handjet', monospace; font-size: 1.6rem; font-weight: 600; color: var(--white); margin-bottom: 1rem; letter-spacing: 0.02em; }
+        .faculty-card .fac-email { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--white-dim); text-decoration: none; border-bottom: 1px solid var(--white-faint); transition: all 0.3s ease; }
+        .faculty-card .fac-email:hover { color: var(--green-light); border-color: var(--green-light); }
 
         /* FOOTER */
-        footer {
-            padding: 4rem 0 3rem;
-            border-top: 1px solid var(--white-faint);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand .footer-logo {
-            font-family: 'Handjet', monospace;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--green-light);
-            margin-bottom: 1rem;
-            letter-spacing: 0.03em;
-        }
-
-        .footer-brand p {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.9rem;
-            color: var(--white-dim);
-            line-height: 1.7;
-        }
-
-        .footer-col h4 {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.55rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--white-dim);
-            margin-bottom: 1.2rem;
-        }
-
-        .footer-col a {
-            display: block;
-            font-family: 'Syne', sans-serif;
-            font-size: 0.9rem;
-            color: var(--white-soft);
-            text-decoration: none;
-            margin-bottom: 0.6rem;
-            transition: color 0.3s ease;
-        }
-
+        footer { padding: 4rem 0 3rem; border-top: 1px solid var(--white-faint); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand .footer-logo { font-family: 'Handjet', monospace; font-size: 1.4rem; font-weight: 600; color: var(--green-light); margin-bottom: 1rem; letter-spacing: 0.03em; }
+        .footer-brand p { font-family: 'Syne', sans-serif; font-size: 0.9rem; color: var(--white-dim); line-height: 1.7; }
+        .footer-col h4 { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 1.2rem; }
+        .footer-col a { display: block; font-family: 'Syne', sans-serif; font-size: 0.9rem; color: var(--white-soft); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.3s ease; }
         .footer-col a:hover { color: var(--green-light); }
-
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid var(--white-faint);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom p {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.6rem;
-            color: var(--white-dim);
-            letter-spacing: 0.05em;
-        }
-
-        .footer-bottom a {
-            color: var(--white-soft);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
+        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--white-faint); display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--white-dim); letter-spacing: 0.05em; }
+        .footer-bottom a { color: var(--white-soft); text-decoration: none; transition: color 0.3s; }
         .footer-bottom a:hover { color: var(--green-light); }
+
+        body.modal-open { overflow: hidden; }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             nav { padding: 1rem; }
             .nav-links { gap: 1rem; }
-            .nav-links a { font-size: 0.55rem; letter-spacing: 0.1em; }
+            .nav-links a { font-size: 0.55rem; }
             .hero-top { top: 5rem; }
             .hero-title .viet { font-size: clamp(4.5rem, 24vw, 6rem); }
             .hero-title .root { font-size: clamp(3.5rem, 19vw, 5rem); }
@@ -706,17 +496,15 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .gallery-grid { grid-template-columns: repeat(3, 1fr); }
             .exhibition-header { flex-direction: column; }
-            .exhibition-stats { justify-content: flex-start; }
+            .artists-grid { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 480px) {
             .nav-links { display: none; }
             .hero-title .viet { font-size: 4rem; }
             .hero-title .root { font-size: 3.2rem; }
-            .hero-subtitle { font-size: 0.9rem; }
             .talks-grid, .resources-grid, .faculty-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .exhibition-hero { padding: 1.5rem; }
+            .exhibition-header, .archive-preview, .artists-section { padding: 1.5rem; }
             .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
             .lightbox-nav { display: none; }
         }
@@ -823,7 +611,8 @@
                 <span class="section-label">Archive</span>
                 <h2 class="section-title">Exhibitions</h2>
 
-                <div class="exhibition-hero">
+                <!-- EXHIBITION 01: rễ-root -->
+                <div class="exhibition-entry">
                     <div class="exhibition-header">
                         <div class="exhibition-info">
                             <h3>rễ-root</h3>
@@ -846,27 +635,91 @@
                         </div>
                     </div>
 
-                    <div class="archive-gallery">
+                    <div class="archive-preview">
                         <h4>Exhibition Documentation</h4>
                         <div class="gallery-grid">
-                            <div class="gallery-thumb" data-index="0">
-                                <img src="image/rerootshow-0.jpg" alt="rễ-root exhibition view 1">
+                            <div class="gallery-thumb" data-index="0"><img src="image/rerootshow-0.jpg" alt="rễ-root exhibition view 1"></div>
+                            <div class="gallery-thumb" data-index="1"><img src="image/rerootshow-1.jpg" alt="rễ-root exhibition view 2"></div>
+                            <div class="gallery-thumb" data-index="2"><img src="image/rerootshow-2.jpeg" alt="rễ-root exhibition view 3"></div>
+                            <div class="gallery-thumb" data-index="3"><img src="image/rerootshow-3.jpg" alt="rễ-root exhibition view 4"></div>
+                            <div class="gallery-thumb" data-index="4"><img src="image/rerootshow-4.jpg" alt="rễ-root exhibition view 5"></div>
+                        </div>
+                    </div>
+
+                    <div class="artists-section">
+                        <h4>Participating Artists</h4>
+                        <div class="artists-grid">
+                            <div class="artist" data-image="https://drive.google.com/thumbnail?id=1Vk9d-jSZEcGr8aZjBvWLUkqr6ZuxClFh&sz=w1000" data-artist="Florin Schroth" data-title="Layers of Life" data-year="2025" data-medium="Mixed Media Installation, Fiber Sculpture, QR code, Recycled Clothing" data-link="https://layersoflife.art/">
+                                <span class="artist-name">Florin Schroth</span><span class="artist-type">Installation</span>
                             </div>
-                            <div class="gallery-thumb" data-index="1">
-                                <img src="image/rerootshow-1.jpg" alt="rễ-root exhibition view 2">
+                            <div class="artist" data-image="https://drive.google.com/thumbnail?id=1Ehv1dhMZw5GgPhvMBEqwiU4r2ihT9Tl0&sz=w1000" data-artist="Le Duc Anh" data-title="vị-nhà (something that tastes like home)" data-year="2025" data-medium="Cyanotype Printing on Bánh Tráng Dừa" data-link="https://www.figma.com/proto/FYJnC73WkZLdCgvV6BbSNN/v%E1%BB%8B-nh%C3%A0-%7C-something-that-tastes-like-home?page-id=0%3A1&node-id=1-2&p=f&viewport=586%2C45%2C0.09&t=vTRw65smSzvY3T2y-1&scaling=contain&content-scaling=fixed">
+                                <span class="artist-name">Le Duc Anh</span><span class="artist-type">Installation</span>
                             </div>
-                            <div class="gallery-thumb" data-index="2">
-                                <img src="image/rerootshow-2.jpeg" alt="rễ-root exhibition view 3">
+                            <div class="artist" data-artist="Ton Nguyen" data-title="There is a place I can't enter" data-year="2025" data-medium="Mixed Media Installation, Customized frame, 1 channel video" data-link="https://bit.ly/3Z0DDyA">
+                                <span class="artist-name">Ton Nguyen</span><span class="artist-type">Installation</span>
                             </div>
-                            <div class="gallery-thumb" data-index="3">
-                                <img src="image/rerootshow-3.jpg" alt="rễ-root exhibition view 4">
+                            <div class="artist" data-image="https://drive.google.com/thumbnail?id=1h1DGmSkevBNpgCOuFzxkeDeic3Q3lDpT&sz=w1000" data-artist="Emma" data-title="i miss" data-year="2025" data-medium="Mixed Media Interactive Installation" data-link="https://www.figma.com/proto/gENAA9riik8wRYmEvigWGE/Untitled?node-id=54-43&t=usfyrEz9lEjD9hLv-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1">
+                                <span class="artist-name">Emma</span><span class="artist-type">Installation</span>
                             </div>
-                            <div class="gallery-thumb" data-index="4">
-                                <img src="image/rerootshow-4.jpg" alt="rễ-root exhibition view 5">
+                            <div class="artist" data-image="https://drive.google.com/thumbnail?id=1urtvFltEvhMt9G0H7Dz5annMx6ytBTgm&sz=w1000" data-artist="alicia ý huỳnh" data-title="INTRA-SELF, INTER-SELF (Within a Self, Among the Self)" data-year="2025" data-medium="Mixed Media Installation, Accordion-fold zine, print, lighting" data-link="https://aliciayhuynh.wordpress.com/">
+                                <span class="artist-name">alicia ý huỳnh</span><span class="artist-type">Installation</span>
+                            </div>
+                            <div class="artist" data-image="https://drive.google.com/thumbnail?id=1GIGHyuzs9g8VivzkhaHw9bkhqK4RfYfb&sz=w1000" data-artist="Bui Ngoc Kieu Anh" data-title="Toi Tim Ve" data-year="2025" data-medium="Mixed Media, Cyanotype on fabric, Rice paper, thread" data-link="https://drive.google.com/drive/u/1/folders/1lv3Ps2Tnxnfw-Ft2zKNdUFpTsejnPU7y">
+                                <span class="artist-name">Bui Ngoc Kieu Anh</span><span class="artist-type">Installation</span>
+                            </div>
+                            <div class="artist" data-artist="Do Le Gia An" data-title="Childhood Reclaim" data-year="2025" data-medium="Interactive Mixed Media Installation" data-link="https://www.figma.com/board/Eg3bJHfpbl0pSxiMUsGKZO/Childhood-Reclaim?node-id=0-1&t=3xnxxVmFms3W1TbX-1">
+                                <span class="artist-name">Do Le Gia An</span><span class="artist-type">Installation</span>
+                            </div>
+                            <div class="artist" data-artist="Tran Minh Khue (Kate)" data-title="自我" data-year="2025" data-medium="Interactive Web" data-link="https://www.figma.com/proto/0NijSFHxkUCbhDcwtC7B85/-Creative-Photo--Asm2_InteractiveExhibition?node-id=59-919&p=f&t=2UZKhAojeEJs6enP-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=59%3A925">
+                                <span class="artist-name">Tran Minh Khue (Kate)</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-artist="Nguyen Thu Tra" data-title="the place I grew up" data-year="2025" data-medium="Digital Image, Video" data-link="https://drive.google.com/drive/folders/11KLFU26VtShCp3ZM05VXu_NG3FO5FEmG?usp=sharing">
+                                <span class="artist-name">Nguyen Thu Tra</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-artist="Nguyen Quynh Huong" data-title="Strata" data-year="2025" data-medium="Digital Image" data-link="https://rmiteduau-my.sharepoint.com/:f:/g/personal/s4051864_rmit_edu_vn/IgBJyX4ntjWLSKHSW1zo0aJsASvCnaLduDJwF876i-0qdTM">
+                                <span class="artist-name">Nguyen Quynh Huong</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-artist="Mir Tran (Tran Khiet Nghi)" data-title="the liminal self" data-year="2025" data-medium="Digital Image" data-link="https://drive.google.com/drive/folders/18455wvdVSSTbhBpX-BOopv_07zrEdGp4?usp=sharing">
+                                <span class="artist-name">Mir Tran</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-image="https://drive.google.com/thumbnail?id=1NWgMnyb4xrYNbqv2BqR-B8NRT8y16l6r&sz=w1000" data-artist="Indochine (Nguyen Huu Nam Duong)" data-title="Có" data-year="2025" data-medium="Digital Image" data-link="https://duongnam30.pixieset.com/cocreativephotographycollectionduongnam/">
+                                <span class="artist-name">Indochine</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-image="https://drive.google.com/thumbnail?id=16M3DKsIcBYOuNlYYO7-Gm2vTV9rL40th&sz=w1000" data-artist="Nguyễn Anh Thư" data-title="Fear of being Wrong" data-year="2025" data-medium="Digital Image" data-link="https://drive.google.com/file/d/12IMPLRM3P2YbXhXuNObREKCRlMyorIq1/view?usp=sharing">
+                                <span class="artist-name">Nguyễn Anh Thư</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/1lXMdf_RPun5xfRQsJKogZ43CCLJVlj-h/view?usp=sharing">
+                                <span class="artist-name">Cléo Migette</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/1dRqFso8PG8QeI-W2cnLGSnpxvltWiTmK/view?usp=sharing">
+                                <span class="artist-name">Agathe Wales</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://drive.google.com/drive/folders/1miAA7TzMJ1Mtm7naGJNK_06m8y4qVGmG?usp=share_link">
+                                <span class="artist-name">Mélissa Holley</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/14Z1fWnef6jDyhro6aF5xxd6_yGa1scUK/view?usp=sharing">
+                                <span class="artist-name">Le Ngoc Van Anh</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://drive.google.com/file/d/1w7tPY4d40g-nxdxSQHDKDfGBdJXQPSrJ/view?usp=sharing">
+                                <span class="artist-name">Tran Minh Khoa</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-EHFzDcQ/nBcSRYPiOyR1S_egsRy3IQ/edit">
+                                <span class="artist-name">Sin Yi Liong</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-MGIjfnE/KKIaS735dQjijVM6_0Mk9A/edit">
+                                <span class="artist-name">Nguyen Anh Thu</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-LPnal6A/7719bpzii_f64_EIfQ7z5g/edit">
+                                <span class="artist-name">Ho Ngoc Truc Linh</span><span class="artist-type">Digital Image</span>
+                            </div>
+                            <div class="artist" data-simple="true" data-link="https://www.canva.com/design/DAG-JceNJnI/utD3zGEBRjGs16MTp4LD2w/edit">
+                                <span class="artist-name">Le Bich Thao</span><span class="artist-type">Digital Image</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- END EXHIBITION 01 -->
+
             </div>
         </section>
 
@@ -945,6 +798,23 @@
 
     </div>
 
+    <!-- ARTIST MODAL -->
+    <div class="modal-overlay" id="artistModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"></button>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-info">
+                <h2 class="modal-artist-name" id="modalArtist"></h2>
+                <p class="modal-work-title" id="modalTitle"></p>
+                <div class="modal-details" id="modalDetails">
+                    <div class="modal-detail-item"><span class="modal-detail-label">Year</span><span class="modal-detail-value" id="modalYear"></span></div>
+                    <div class="modal-detail-item"><span class="modal-detail-label">Medium</span><span class="modal-detail-value" id="modalMedium"></span></div>
+                </div>
+                <a class="modal-link" id="modalLink" href="#" target="_blank">View Full Work <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+            </div>
+        </div>
+    </div>
+
     <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose"></button>
@@ -1014,14 +884,10 @@
             const docH = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPct = docH > 0 ? scrollY / docH : 0;
 
-            // Background grid with green tint
             for (let r = 0; r < rows; r++) {
                 for (let c = 0; c < cols; c++) {
                     const a = 0.018 + Math.sin(time * 0.4 + gridPhase[r * cols + c]) * 0.008;
-                    if (a > 0.004) { 
-                        ctx.fillStyle = `rgba(200,220,210,${a})`; 
-                        ctx.fillRect(c * CELL, r * CELL, PIXEL, PIXEL); 
-                    }
+                    if (a > 0.004) { ctx.fillStyle = `rgba(200,220,210,${a})`; ctx.fillRect(c * CELL, r * CELL, PIXEL, PIXEL); }
                 }
             }
 
@@ -1045,17 +911,47 @@
         resize(); draw();
     })();
 
+    // ARTIST MODAL
+    (function() {
+        const modal = document.getElementById('artistModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalDetails = document.getElementById('modalDetails');
+
+        document.querySelectorAll('.artist').forEach(a => {
+            a.addEventListener('click', () => {
+                const link = a.dataset.link;
+                if (a.dataset.simple === 'true' && link) { window.open(link, '_blank'); return; }
+                const name = a.dataset.artist; if (!name) return;
+                document.getElementById('modalArtist').textContent = name;
+                document.getElementById('modalTitle').textContent = a.dataset.title || '';
+                document.getElementById('modalYear').textContent = a.dataset.year || '2025';
+                document.getElementById('modalMedium').textContent = a.dataset.medium || '—';
+                document.getElementById('modalLink').href = link || '#';
+                if (a.dataset.image) { modalImage.src = a.dataset.image; modalImage.style.display = 'block'; }
+                else { modalImage.style.display = 'none'; }
+                document.getElementById('modalTitle').style.display = a.dataset.title ? 'block' : 'none';
+                modalDetails.style.display = (a.dataset.year || a.dataset.medium) ? 'grid' : 'none';
+                modal.classList.add('active'); document.body.classList.add('modal-open');
+            });
+        });
+
+        function close() { modal.classList.remove('active'); document.body.classList.remove('modal-open'); }
+        document.getElementById('modalClose').addEventListener('click', close);
+        modal.addEventListener('click', e => { if (e.target === modal) close(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) close(); });
+    })();
+
     // LIGHTBOX
     (function() {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const thumbs = document.querySelectorAll('.gallery-thumb');
         const images = [
-            'images/rerootshow-0.jpg',
-            'images/rerootshow-1.jpg',
-            'images/rerootshow-2.jpeg',
-            'images/rerootshow-3.jpg',
-            'images/rerootshow-4.jpg'
+            'image/rerootshow-0.jpg',
+            'image/rerootshow-1.jpg',
+            'image/rerootshow-2.jpeg',
+            'image/rerootshow-3.jpg',
+            'image/rerootshow-4.jpg'
         ];
         let currentIndex = 0;
 
@@ -1071,20 +967,10 @@
             document.body.style.overflow = '';
         }
 
-        function next() {
-            currentIndex = (currentIndex + 1) % images.length;
-            lightboxImg.src = images[currentIndex];
-        }
+        function next() { currentIndex = (currentIndex + 1) % images.length; lightboxImg.src = images[currentIndex]; }
+        function prev() { currentIndex = (currentIndex - 1 + images.length) % images.length; lightboxImg.src = images[currentIndex]; }
 
-        function prev() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            lightboxImg.src = images[currentIndex];
-        }
-
-        thumbs.forEach(thumb => {
-            thumb.addEventListener('click', () => open(parseInt(thumb.dataset.index)));
-        });
-
+        thumbs.forEach(thumb => { thumb.addEventListener('click', () => open(parseInt(thumb.dataset.index))); });
         document.getElementById('lightboxClose').addEventListener('click', close);
         document.getElementById('lightboxNext').addEventListener('click', next);
         document.getElementById('lightboxPrev').addEventListener('click', prev);
