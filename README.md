@@ -11,6 +11,8 @@ Course Coordinator	Bin Youn (bin.youn@rmit.edu.vn)
 Lecturer	Bin Youn and Nick Tram (quang.tram@rmit.edu.vn)
 Total Students	41 students (combined 2 classes)
 Student Programs	Digital Media, Communication, Design, Marketing, Business, International students(French 3, Swiss 1)
+https://au.miro.com/app/board/uXjVJ0G62UU=/?share_link_id=869347554165
+
 
 Color Coding Legend
 Color	Activity Type
