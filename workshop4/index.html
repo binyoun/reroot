@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rễ-root — W04: Bringing the Root to Light</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep:      #0a0f0c;
+            --bg-card:      #0d1410;
+            --white:        #e8efe9;
+            --white-dim:    rgba(232,239,233,0.45);
+            --white-faint:  rgba(232,239,233,0.15);
+            --green:        #3a7a52;
+            --green-light:  #5aad72;
+            --green-bright: #7dd99b;
+            --green-pale:   rgba(90,173,114,0.10);
+            --green-pale2:  rgba(90,173,114,0.05);
+        }
+
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--bg-deep);
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* CANVAS */
+        #pixelCanvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--bg-deep) 0%, transparent 100%);
+        }
+        .nav-logo {
+            font-family: 'Handjet', monospace;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--green-light);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+        .nav-context {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white-dim);
+        }
+        .nav-back {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-back:hover { color: var(--green-bright); }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 6rem 2rem 4rem;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('../image/rerootshow-panoramic.jpg');
+            background-size: cover;
+            background-position: center 40%;
+            filter: brightness(0.22) saturate(0.5);
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-deep) 25%, transparent 65%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        .hero-ws-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.52rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .hero-num {
+            font-family: 'Handjet', monospace;
+            font-size: clamp(5rem, 20vw, 13rem);
+            font-weight: 700;
+            color: var(--green-light);
+            line-height: 0.82;
+            letter-spacing: 0.02em;
+            display: block;
+        }
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-top: 0.6rem;
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.8rem;
+        }
+        .hero-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.48rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            border: 1px solid var(--white-faint);
+            padding: 0.3rem 0.75rem;
+        }
+
+        /* OVERVIEW STRIP */
+        .overview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--green);
+            border-bottom: 1px solid var(--white-faint);
+            position: relative;
+            z-index: 1;
+        }
+        .overview-item {
+            padding: 1.5rem 2rem;
+            border-right: 1px solid var(--white-faint);
+        }
+        .overview-item:last-child { border-right: none; }
+        .overview-label {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.48rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            margin-bottom: 0.4rem;
+        }
+        .overview-value {
+            display: block;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+
+        /* CONTENT WRAPPER */
+        .content { position: relative; z-index: 1; }
+
+        /* SECTION */
+        .ws-section {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--white-faint);
+        }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.48rem;
+            letter-spacing: 0.2em;
+            color: var(--green-light);
+            flex-shrink: 0;
+            min-width: 2rem;
+        }
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            flex: 1;
+            line-height: 1.3;
+        }
+        .section-time {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.48rem;
+            letter-spacing: 0.15em;
+            color: var(--white-dim);
+            border: 1px solid var(--white-faint);
+            padding: 0.2rem 0.5rem;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        /* BODY TEXT */
+        .section-body p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.95;
+            color: var(--white-dim);
+            margin-bottom: 1.2rem;
+        }
+        .section-body p:last-child { margin-bottom: 0; }
+
+        /* SUB-SECTION */
+        .sub-section { margin-top: 2.5rem; }
+        .sub-section:first-child { margin-top: 0; }
+        .sub-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--green-bright);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 1rem;
+        }
+
+        /* QUOTE */
+        .ws-quote {
+            border-left: 2px solid var(--green-light);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: var(--green-pale2);
+        }
+        .ws-quote p {
+            font-family: 'Syne', sans-serif !important;
+            font-size: 1.05rem !important;
+            font-weight: 500 !important;
+            color: var(--white) !important;
+            font-style: italic;
+            line-height: 1.65 !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* ACTIVITY BOX */
+        .activity {
+            border: 1px solid var(--green-light);
+            background: var(--green-pale);
+            padding: 1.6rem;
+            margin: 2rem 0;
+        }
+        .activity-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.45rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            display: block;
+            margin-bottom: 0.7rem;
+        }
+        .activity-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .activity-body p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.88rem;
+            line-height: 1.88;
+            color: var(--white-dim);
+            margin-bottom: 0.8rem;
+        }
+        .activity-body p:last-child { margin-bottom: 0; }
+        .activity-prompt {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            border-left: 2px solid var(--green-bright);
+            padding-left: 1rem;
+            margin: 1.2rem 0;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .activity-badge {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.44rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            border: 1px solid var(--green);
+            padding: 0.2rem 0.55rem;
+            margin-top: 1rem;
+        }
+
+        /* FULL-WIDTH IMAGE */
+        .img-full {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            overflow: hidden;
+        }
+        .img-full img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.7) saturate(0.75);
+        }
+        .img-caption {
+            padding: 0.75rem 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            color: var(--white-faint);
+            border-bottom: 1px solid var(--white-faint);
+        }
+
+        /* 2x2 IMAGE GRID */
+        .img-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            margin: 2.5rem 0;
+        }
+        .img-grid-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .img-grid-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.65) saturate(0.65);
+            transition: filter 0.4s ease;
+        }
+        .img-grid-item:hover img { filter: brightness(0.82) saturate(0.9); }
+        .img-grid-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1rem 0.9rem 0.7rem;
+            background: linear-gradient(to top, rgba(10,15,12,0.96) 0%, transparent 100%);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        /* FORMAT CARDS */
+        .format-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.8rem 0;
+        }
+        .format-card {
+            border: 1px solid var(--green-light);
+            padding: 1.4rem;
+            background: var(--bg-card);
+        }
+        .format-card-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.45rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .format-card-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.7rem;
+        }
+        .format-card p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.82;
+            color: var(--white-dim);
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .checklist li {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: var(--white-dim);
+            padding: 0.5rem 0 0.5rem 1.6rem;
+            position: relative;
+            border-bottom: 1px solid var(--white-faint);
+        }
+        .checklist li:last-child { border-bottom: none; }
+        .checklist li::before {
+            content: '□';
+            position: absolute;
+            left: 0;
+            color: var(--green-light);
+        }
+
+        /* EMAIL BOX */
+        .email-box {
+            border: 1px solid var(--green-light);
+            background: var(--green-pale);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .email-deadline {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--green-bright);
+            margin-bottom: 0.2rem;
+        }
+        .email-deadline-sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--green-light);
+            margin-bottom: 1.8rem;
+            display: block;
+            line-height: 1.7;
+        }
+        .email-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 1.5rem;
+        }
+        .email-field {
+            display: grid;
+            grid-template-columns: 11rem 1fr;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--white-faint);
+            align-items: start;
+        }
+        .email-field:first-child { border-top: 1px solid var(--white-faint); }
+        .email-field-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--green-bright);
+            font-weight: 700;
+            padding-top: 0.1rem;
+        }
+        .email-field-desc {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--white-dim);
+            line-height: 1.65;
+        }
+        .email-reassurance {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--white-dim);
+            border-top: 1px solid var(--white-faint);
+            padding-top: 1.2rem;
+            line-height: 1.65;
+        }
+        .email-link {
+            display: inline-block;
+            margin-top: 1.2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: var(--green-bright);
+            text-decoration: none;
+            border-bottom: 1px solid var(--green);
+            padding-bottom: 0.1rem;
+            transition: color 0.3s;
+        }
+        .email-link:hover { color: var(--white); border-color: var(--white); }
+
+        /* REFERENCE SECTION */
+        .ref-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .ref-header { margin-bottom: 2rem; }
+        .ref-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.48rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--green-bright);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .ref-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+        }
+        .ref-desc {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.85;
+            color: var(--white-dim);
+        }
+        .ref-cards { display: flex; flex-direction: column; }
+        .ref-card {
+            display: grid;
+            grid-template-columns: 1.1fr 1.6fr 1fr;
+            gap: 1.5rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--white-faint);
+            align-items: start;
+        }
+        .ref-card:last-child { border-bottom: none; }
+        .ref-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+        .ref-project {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            color: var(--green-bright);
+            letter-spacing: 0.04em;
+        }
+        .ref-statement {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.76rem;
+            line-height: 1.75;
+            color: var(--white-dim);
+        }
+        .ref-space {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            line-height: 1.75;
+            color: rgba(232,239,233,0.28);
+            font-style: italic;
+        }
+
+        /* FOOTER */
+        .ws-footer {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--green);
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .footer-back {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-back:hover { color: var(--green-bright); }
+        .footer-sig {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.46rem;
+            letter-spacing: 0.15em;
+            color: var(--white-faint);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            nav { padding: 1rem; }
+            .nav-context { display: none; }
+            .overview { grid-template-columns: 1fr; }
+            .overview-item { border-right: none; border-bottom: 1px solid var(--white-faint); }
+            .overview-item:last-child { border-bottom: none; }
+            .ws-section { padding: 3rem 1.2rem; }
+            .img-full img { height: 260px; }
+            .img-grid { grid-template-columns: 1fr; }
+            .img-grid-item img { height: 230px; }
+            .format-cards { grid-template-columns: 1fr; }
+            .email-field { grid-template-columns: 1fr; gap: 0.15rem; }
+            .ref-card { grid-template-columns: 1fr; gap: 0.4rem; }
+            .ref-wrap { padding: 3rem 1.2rem; }
+            .hero { padding: 5rem 1.2rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="pixelCanvas"></canvas>
+
+    <nav>
+        <a href="../" class="nav-logo">rễ-root</a>
+        <span class="nav-context">Workshop 04 · Creative Photography · RMIT Vietnam</span>
+        <a href="../workshops/" class="nav-back">&#x2190; Workshops</a>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-ws-label">Workshop 04 · Week 11</span>
+            <span class="hero-num">04</span>
+            <h1 class="hero-title">Bringing the Root<br>to Light</h1>
+            <div class="hero-tags">
+                <span class="hero-tag">60 Minutes</span>
+                <span class="hero-tag">Artist Statement</span>
+                <span class="hero-tag">Presentation Format</span>
+                <span class="hero-tag">Exhibition Ready</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── OVERVIEW ── -->
+    <div class="overview">
+        <div class="overview-item">
+            <span class="overview-label">Duration</span>
+            <span class="overview-value">60 Minutes</span>
+        </div>
+        <div class="overview-item">
+            <span class="overview-label">Goal</span>
+            <span class="overview-value">Refine your statement. Think spatially. Prepare for Week 12.</span>
+        </div>
+        <div class="overview-item">
+            <span class="overview-label">Next Up</span>
+            <span class="overview-value">Week 12 · Media Studio Sharing</span>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- ── SECTION 1: WELCOME ── -->
+        <section class="ws-section">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2 class="section-title">Welcome and Grounding</h2>
+                <span class="section-time">5 min</span>
+            </div>
+            <div class="section-body">
+                <p>You have come a long way to reach this point. You have moved through concept development, made images, done a peer critique, edited a series, and stood up in the room to talk about your work. That is not a small thing.</p>
+
+                <p>Week 12 is not a critique, and it is not a performance. It is the first time your work exists in a room with other people's bodies. That is a different kind of moment, and it is worth preparing for.</p>
+
+                <p>Today we are shifting from internal creation to external sharing — finding the right words and physical forms to give your rễ-root project a public voice.</p>
+
+                <div class="ws-quote">
+                    <p>"You do not need to have everything finished. Bring what you have, share where you are at, and let us think together about what the work needs."</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FULL IMAGE -->
+    <div class="img-full">
+        <img src="../image/rerootshow-0.jpg" alt="Last semester's rễ-root exhibition, Media Studio, RMIT Vietnam">
+        <div class="img-caption">Last semester's rễ-root exhibition · Media Studio · RMIT Vietnam</div>
+    </div>
+
+    <div class="content">
+
+        <!-- ── SECTION 2: ARTIST STATEMENT ── -->
+        <section class="ws-section">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2 class="section-title">From Artist Talk to Artist Statement</h2>
+                <span class="section-time">15 min</span>
+            </div>
+            <div class="section-body">
+
+                <div class="sub-section">
+                    <div class="sub-title">Before You Write</div>
+                    <p>You have already found words for your work. In your artist talk, you said things out loud that were honest and direct. The artist statement is a refinement of that, not a replacement. The difference is context: a statement lives near the work, on a wall or in a handout, and it is read by someone who has already seen the photographs.</p>
+                    <p>That reader does not need a description of what is visible. They need to understand where the work came from and what it is reaching toward.</p>
+                    <p>Last semester, each student wrote with real specificity. Anh Le Duc wrote about the scent and texture of bánh tráng dừa as a carrier of the feeling of coming home. An Do Le Gia invited the audience to experiment together using the five senses. These statements worked because they were precise and personal — there was no language in them that could belong to anyone else.</p>
+                    <p>The question: what is the part of your work that only you could say?</p>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-label">Activity 01</span>
+                    <div class="activity-title">Uncovering the Core</div>
+                    <div class="activity-body">
+                        <p>Take out a notebook or open a document.</p>
+                        <div class="activity-prompt">Go back to what you said in your artist talk. What was the single moment where you felt like you were actually saying what the project is about? Write that down, in whatever words come. Do not edit while writing. Follow the thought wherever it goes.</div>
+                        <p>Take 5 minutes to write freely. Then read back what you wrote and underline the one sentence that feels the most true, even if it is rough. That sentence is the foundation. Everything else in a final written statement can be built around it.</p>
+                        <span class="activity-badge">10 min · individual writing + refinement</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── SECTION 3: SPACE AND PEOPLE ── -->
+        <section class="ws-section">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2 class="section-title">Work, Space, and People</h2>
+                <span class="section-time">20 min</span>
+            </div>
+            <div class="section-body">
+
+                <div class="sub-section">
+                    <div class="sub-title">How Placement Changes Everything</div>
+                    <p>The same photograph placed on a phone screen, printed small, and hung at eye level in a room are three different experiences. Presentation is not neutral. It is part of the work.</p>
+                    <p>Look at how last semester's cohort used the space. Each decision about height, surface, and structure created a different kind of encounter between the work and the people who entered.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 2x2 IMAGE GRID -->
+    <div class="img-grid" style="max-width: 760px; margin: 0 auto;">
+        <div class="img-grid-item">
+            <img src="../image/rerootshow-6.jpg" alt="Prints pinned to a partition wall, viewers in conversation">
+            <div class="img-grid-caption">Eye-level prints on a partition wall. Intimate and conversational — viewers stand upright and talk.</div>
+        </div>
+        <div class="img-grid-item">
+            <img src="../image/rerootshow-8.jpg" alt="Cyanotype prints hanging from a bamboo structure">
+            <div class="img-grid-caption">Cyanotypes hanging from above. Bodily and slow — the viewer steps close and looks up.</div>
+        </div>
+        <div class="img-grid-item">
+            <img src="../image/rerootshow-11.jpg" alt="Photographs being arranged on the floor">
+            <div class="img-grid-caption">Prints on the floor. Makes the viewer crouch, look down, move carefully among the work.</div>
+        </div>
+        <div class="img-grid-item">
+            <img src="../image/rerootshow-1.jpg" alt="Net installation with visitors reaching in">
+            <div class="img-grid-caption">Net installation — participatory. Crossing its threshold requires the viewer to physically engage.</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <section class="ws-section" style="padding-top: 2.5rem;">
+            <div class="section-body">
+                <p>The point is not that you need to build a net or hang fabric from the ceiling. The point is that each spatial decision creates a different kind of encounter. Small prints invite intimacy. Work on the floor asks for physical attention. Objects that can be held create a one-to-one relationship between the viewer's hands and the work.</p>
+                <p>The question is not: where do I put this? The question is: what do I want the person standing in front of my work to <em style="color: var(--white);">feel</em>, and what does that feeling ask of their body?</p>
+
+                <div class="format-cards">
+                    <div class="format-card">
+                        <span class="format-card-label">Option A</span>
+                        <div class="format-card-title">Installation-Based</div>
+                        <p>Placing or mock-installing your work in the Media Studio. Prints pinned to a panel, objects on a pedestal or floor, or a rough spatial arrangement. Best for work that depends on scale, texture, or physical proximity to be felt properly.</p>
+                    </div>
+                    <div class="format-card">
+                        <span class="format-card-label">Option B</span>
+                        <div class="format-card-title">Slide-Based Sharing</div>
+                        <p>A low-pressure verbal walkthrough using images on a screen, with minimal or no text. Best for work that benefits from narration, historical context, or a sequence that cannot be read from a single image.</p>
+                    </div>
+                </div>
+
+                <p>Neither option is more serious than the other. The choice should follow the work, not the other way around.</p>
+
+                <div class="activity">
+                    <span class="activity-label">Activity 02</span>
+                    <div class="activity-title">The Spatial Conversation</div>
+                    <div class="activity-body">
+                        <p>Find a partner. Share your honest sentence from Activity 1 with them. Then work through these questions together:</p>
+                        <div class="activity-prompt">What does someone's body do when they encounter your work at its best — do they stand still, lean in, walk around, reach for something, sit down? Does the work need to be seen all at once or discovered piece by piece? What does it feel like to share the space around your work with other people? Option A or Option B — and why?</div>
+                        <p>This is not a final decision. It is a way of thinking out loud about what your work needs before committing to a format.</p>
+                        <span class="activity-badge">10 min · pairs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SECTION 4: LOGISTICS ── -->
+        <section class="ws-section">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2 class="section-title">Exhibition Ready and Logistics</h2>
+                <span class="section-time">15 min</span>
+            </div>
+            <div class="section-body">
+
+                <div class="sub-section">
+                    <div class="sub-title">Before Week 12</div>
+                    <p>Regardless of format, check:</p>
+                    <ul class="checklist">
+                        <li>File resolution is sufficient for the intended output size</li>
+                        <li>Color profiles are correct — sRGB for screen; check with the lab for print specifications</li>
+                        <li>Physical materials for Option A are sourced: tape, pins, frames, backing, borrowed objects</li>
+                        <li>If you are printing: place orders now, not the night before</li>
+                    </ul>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">Send This by Thursday 12 PM</div>
+                    <p>Send an email before the session. This allows time to organize the Media Studio layout and make sure your needs are ready in advance. If you are planning an installation, this deadline is especially critical — your space assignment depends on it.</p>
+
+                    <div class="email-box">
+                        <div class="email-deadline">Thursday · 12:00 PM</div>
+                        <span class="email-deadline-sub">Submission deadline · Critical for space planning<br>Especially if you are doing an installation — the layout cannot be assigned without this</span>
+
+                        <div class="email-fields">
+                            <div class="email-field">
+                                <span class="email-field-label">Sharing Format</span>
+                                <span class="email-field-desc">Option A (installation) or Option B (slide-based)</span>
+                            </div>
+                            <div class="email-field">
+                                <span class="email-field-label">Project Direction</span>
+                                <span class="email-field-desc">A short plain-language description of your work</span>
+                            </div>
+                            <div class="email-field">
+                                <span class="email-field-label">What You Are Making</span>
+                                <span class="email-field-desc">Scale and number of works, or slide count</span>
+                            </div>
+                            <div class="email-field">
+                                <span class="email-field-label">Spatial Ideas</span>
+                                <span class="email-field-desc">Where in the room, what height, arrangement, or what the slide sequence looks like</span>
+                            </div>
+                            <div class="email-field">
+                                <span class="email-field-label">Equipment Needs</span>
+                                <span class="email-field-desc">Projector, screens, mounting hardware, plinth, clothing rail, and so on</span>
+                            </div>
+                        </div>
+
+                        <div class="email-reassurance">If you feel lost, just send your info and the parts you are still figuring out, along with your questions. No need to be perfect — clarity of intention matters more than having every detail settled.</div>
+                        <a href="mailto:binbinyoun@gmail.com" class="email-link">Send email &#x2192;</a>
+                    </div>
+                </div>
+
+                <div class="activity">
+                    <span class="activity-label">Activity 03</span>
+                    <div class="activity-title">The Opening Line</div>
+                    <div class="activity-body">
+                        <p>Imagine a visitor pausing in front of your work during next week's session. That person does not know your project. They are curious.</p>
+                        <div class="activity-prompt">Write two sentences you would say to that person to introduce your work. Then say them out loud to your partner.</div>
+                        <p>The goal is not a performance. It is just the comfort of hearing your own words before the moment arrives.</p>
+                        <span class="activity-badge">5 min · pairs</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── SECTION 5: WRAP-UP ── -->
+        <section class="ws-section">
+            <div class="section-header">
+                <span class="section-num">05</span>
+                <h2 class="section-title">Before You Go</h2>
+                <span class="section-time">5 min</span>
+            </div>
+            <div class="section-body">
+                <p>Your next steps before Week 12:</p>
+                <ul class="checklist">
+                    <li>Email plan due <strong style="color: var(--green-bright);">Thursday 12 PM</strong> — especially important if you are planning an installation</li>
+                    <li>Print or finalize files based on your chosen format</li>
+                    <li>Bring the work as it currently is</li>
+                </ul>
+
+                <div class="ws-quote" style="margin-top: 2rem;">
+                    <p>"Next week is not a verdict. It is a chance to see your work in a room, with other people, for the first time. That moment is worth showing up for."</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;">Bring any questions about the space or logistics to class.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FULL IMAGE -->
+    <div class="img-full">
+        <img src="../image/rerootshow-4.jpg" alt="Installation space with net work and screen, rễ-root exhibition">
+        <div class="img-caption">rễ-root · Installation in the Media Studio · RMIT Vietnam</div>
+    </div>
+
+    <!-- ── REFERENCE SECTION ── -->
+    <div class="ref-wrap">
+        <div class="ref-header">
+            <span class="ref-label">From Last Semester</span>
+            <div class="ref-title">Last Semester's rễ-root</div>
+            <p class="ref-desc">These eight students from last semester took very different approaches. Let their work spark ideas for yours.</p>
+        </div>
+
+        <div class="ref-cards">
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">Anh Le Duc</div>
+                    <div class="ref-project">Vị Nhà · Tastes Like Home</div>
+                </div>
+                <div class="ref-statement">Sensory connection to home through scent and texture — the bánh tráng dừa that defines the feeling of returning.</div>
+                <div class="ref-space">Intimate, object-scale</div>
+            </div>
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">An Do Le Gia</div>
+                    <div class="ref-project">Childhood Reclaim</div>
+                </div>
+                <div class="ref-statement">Five senses and diverse image-making techniques to reclaim the wonder of a lost childhood. Invites the audience to experiment together.</div>
+                <div class="ref-space">Net installation · participatory · interactive</div>
+            </div>
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">Trần Quốc Hào</div>
+                    <div class="ref-project">The Bond</div>
+                </div>
+                <div class="ref-statement">Physical objects and artifacts as evidence of the reciprocal relationship between humans and environment — how we shape the world and how it shapes us in return.</div>
+                <div class="ref-space">Object study · small-scale arrangement</div>
+            </div>
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">Trần Khiết Nghi</div>
+                    <div class="ref-project">the liminal self</div>
+                </div>
+                <div class="ref-statement">Creating from where uncertainty and self-discovery coexist — intentional gestures as a quiet reclamation of the body as a site of strength and memory.</div>
+                <div class="ref-space">Cyanotype hanging structure · vertical · translucent</div>
+            </div>
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">Ton</div>
+                    <div class="ref-project">There Is A Place I Can't Enter</div>
+                </div>
+                <div class="ref-statement">The realm between physical reality, the present, and the past — exploring cultural heritage across film, sound design, 3D, and fashion.</div>
+                <div class="ref-space">Multi-medium · TV screen · collage panels</div>
+            </div>
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">Emma</div>
+                    <div class="ref-project">i miss</div>
+                </div>
+                <div class="ref-statement">A longing for childhood people and spaces. Specific images may fade with time, but the underlying feelings never do.</div>
+                <div class="ref-space">Wall-based photograph arrangement</div>
+            </div>
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">Alicia Ý Huỳnh</div>
+                    <div class="ref-project">INTRA-SELF, INTER-SELF</div>
+                </div>
+                <div class="ref-statement">Shōkakkō — life's beauty found in the small and mundane. A meditation on the entangled relationship between the self and the others that shape our identity.</div>
+                <div class="ref-space">Photozine as held object</div>
+            </div>
+            <div class="ref-card">
+                <div>
+                    <div class="ref-name">Florin Schroth</div>
+                    <div class="ref-project">Layers of Life</div>
+                </div>
+                <div class="ref-statement">Signs of usage give a garment character. The lifecycle of vintage clothing — worn, torn, eventually valued — and the experience of wearing the identity of another.</div>
+                <div class="ref-space">Clothing rail · floor scatter · 1-metre sculpture</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="position: relative; z-index: 1; border-top: 1px solid var(--green);">
+        <div class="ws-footer">
+            <a href="../workshops/" class="footer-back">&#x2190; All Workshops</a>
+            <span class="footer-sig">rễ-root · Creative Photography · RMIT Vietnam</span>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        const canvas = document.getElementById('pixelCanvas');
+        const ctx = canvas.getContext('2d');
+        const PIXEL = 6, GAP = 2, CELL = PIXEL + GAP;
+        let cols, rows, rootGrid, time = 0, gridPhase = [], rootData = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            cols = Math.ceil(canvas.width / CELL);
+            rows = Math.ceil(canvas.height / CELL);
+            buildRoots();
+        }
+
+        function growBranch(col, row, length, spread, maxThick, results) {
+            let c = col, r = row;
+            for (let i = 0; i < length; i++) {
+                const thick = Math.max(0, Math.round(maxThick * (1 - i / length * 0.7)));
+                for (let t = -thick; t <= thick; t++) {
+                    const cc = c + t;
+                    if (cc >= 0 && cc < cols && r >= 0 && r < rows) {
+                        const key = cc + ',' + r;
+                        if (!rootGrid.has(key)) { rootGrid.add(key); results.push({ col: cc, row: r, depth: i / length }); }
+                    }
+                }
+                r += 1;
+                c += (Math.random() < 0.45) ? (Math.random() < 0.5 ? -1 : 1) : 0;
+                if (Math.random() < spread && i > 4) {
+                    growBranch(c + (Math.random() < 0.5 ? -2 : 2), r, Math.floor(length * 0.35), spread * 0.35, Math.max(0, maxThick - 1), results);
+                }
+                if (r >= rows) break;
+            }
+        }
+
+        function buildRoots() {
+            rootGrid = new Set(); rootData = [];
+            gridPhase = new Float32Array(cols * rows);
+            for (let i = 0; i < gridPhase.length; i++) gridPhase[i] = Math.random() * Math.PI * 2;
+            const cx = Math.floor(cols / 2), ml = rows;
+            [
+                { c: cx,      l: ml,        s: 0.06,  t: 3 },
+                { c: cx - 5,  l: ml * 0.88, s: 0.05,  t: 2 },
+                { c: cx + 5,  l: ml * 0.88, s: 0.05,  t: 2 },
+                { c: cx - 12, l: ml * 0.65, s: 0.04,  t: 1 },
+                { c: cx + 12, l: ml * 0.65, s: 0.04,  t: 1 },
+                { c: cx - 20, l: ml * 0.45, s: 0.035, t: 0 },
+                { c: cx + 20, l: ml * 0.45, s: 0.035, t: 0 },
+                { c: cx - 3,  l: ml * 0.92, s: 0.045, t: 2 },
+                { c: cx + 3,  l: ml * 0.92, s: 0.045, t: 2 },
+            ].forEach(s => growBranch(s.c, 0, Math.floor(s.l), s.s, s.t, rootData));
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            time += 0.012;
+            const scrollPct = Math.min(1, window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight));
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const a = 0.018 + Math.sin(time * 0.4 + gridPhase[r * cols + c]) * 0.008;
+                    if (a > 0.004) { ctx.fillStyle = `rgba(200,220,210,${a})`; ctx.fillRect(c * CELL, r * CELL, PIXEL, PIXEL); }
+                }
+            }
+
+            const growReveal = 0.1 + scrollPct * 0.9;
+            for (let i = 0; i < rootData.length; i++) {
+                const rd = rootData[i];
+                if (rd.depth >= growReveal) continue;
+                const fadeEdge = Math.min(1, (growReveal - rd.depth) * 8);
+                const breathe = Math.sin(time * (0.6 + rd.depth * 0.8) + rd.col * 0.5 + rd.row * 0.3) * 0.2;
+                const alpha = (0.2 + (1 - rd.depth) * 0.5 + breathe) * fadeEdge;
+                if (alpha > 0.01) {
+                    const g = Math.floor(80 + (1 - rd.depth) * 90);
+                    ctx.fillStyle = `rgba(${Math.floor(20 + rd.depth * 20)},${g},${Math.floor(35 + rd.depth * 15)},${alpha})`;
+                    ctx.fillRect(rd.col * CELL, rd.row * CELL, PIXEL, PIXEL);
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+    })();
+    </script>
+
+</body>
+</html>
