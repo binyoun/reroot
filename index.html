@@ -578,6 +578,9 @@
         .resource-card .res-icon svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.5; fill: none; }
         .resource-card .res-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--white); }
         .resource-card .res-desc { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--white-dim); line-height: 1.6; }
+        .res-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem; }
+        .res-links a { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); text-decoration: none; padding: 0.5rem 0.9rem; border: 1px solid var(--green); transition: all 0.3s ease; }
+        .res-links a:hover { background: var(--green); color: var(--bg-deep); }
 
         /* FACULTY */
         .faculty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
@@ -1032,13 +1035,17 @@
                 <span class="section-label">Tools & Archives</span>
                 <h2 class="section-title">Resources</h2>
                 <div class="resources-grid">
-                    <a href="https://au.miro.com/app/board/uXjVJ0G62UU=/?share_link_id=869347554165" target="_blank" class="resource-card">
+                    <div class="resource-card">
                         <div class="res-icon">
                             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
                         </div>
                         <span class="res-title">Miro Archive</span>
-                        <span class="res-desc">Class planning board, exhibition development, and collaborative workspace for Creative Photography.</span>
-                    </a>
+                        <span class="res-desc">Class planning boards, exhibition development, and collaborative workspace, one board per semester.</span>
+                        <div class="res-links">
+                            <a href="https://au.miro.com/app/board/uXjVJ0G62UU=/?share_link_id=869347554165" target="_blank">3-2025 →</a>
+                            <a href="https://au.miro.com/app/board/uXjVGQAQNmg=/?share_link_id=141034299408" target="_blank">S1 2026 →</a>
+                        </div>
+                    </div>
                     <a href="workshops/" class="resource-card">
                         <div class="res-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2v8"/><path d="M12 10q-4 3-6 8"/><path d="M12 10q4 3 6 8"/><path d="M12 10v10"/></svg>
