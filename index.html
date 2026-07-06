@@ -27,7 +27,7 @@
             --bg-hover: #111a15;
             --white: #e8efe9;
             --white-soft: rgba(232, 239, 233, 0.75);
-            --white-dim: rgba(232, 239, 233, 0.45);
+            --white-dim: rgba(232, 239, 233, 0.55);
             --white-faint: rgba(232, 239, 233, 0.15);
             --green: #3a7a52;
             --green-light: #5aad72;
@@ -232,7 +232,7 @@
         .philosophy { padding: 8rem 0; }
 
         .philosophy-text {
-            max-width: 750px;
+            max-width: 680px;
             font-family: 'Syne', sans-serif;
             font-size: 1.1rem;
             font-weight: 400;
@@ -272,7 +272,7 @@
         .talk-card:hover { border-color: var(--green); background: var(--bg-hover); transform: translateY(-2px); }
         .talk-card .talk-label { display: block; font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 0.8rem; }
         .talk-card .talk-title { display: block; font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; line-height: 1.4; }
-        .talk-card .talk-meta { display: block; font-family: 'Space Mono', monospace; font-size: 0.55rem; color: var(--green-light); letter-spacing: 0.1em; line-height: 1.7; }
+        .talk-card .talk-meta { display: block; font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--green-light); letter-spacing: 0.06em; line-height: 1.7; }
         .talk-card-static { cursor: default; }
         .talk-card-static:hover { transform: none; border-color: var(--green); background: var(--bg-hover); }
         .talks-intro { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 400; color: var(--white-soft); line-height: 1.9; max-width: 750px; margin-bottom: 2.5rem; }
@@ -556,13 +556,14 @@
         .lightbox-prev { left: 2rem; }
         .lightbox-next { right: 2rem; }
 
-        /* RECOGNITION */
-        .recog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .recog-card { background: var(--bg-card); border: 1px solid var(--white-faint); padding: 2rem; }
-        .recog-card .rec-event { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.8rem; display: block; }
-        .recog-card .rec-name { font-family: 'Handjet', monospace; font-size: 1.6rem; font-weight: 600; color: var(--white); letter-spacing: 0.02em; margin-bottom: 0.2rem; }
-        .recog-card .rec-work { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 500; color: var(--green-light); margin-bottom: 1rem; }
-        .recog-card .rec-desc { font-family: 'Syne', sans-serif; font-size: 0.9rem; color: var(--white-soft); line-height: 1.7; margin-bottom: 1.2rem; }
+        /* RECOGNITION (compact strip) */
+        .recognition { padding: 3rem 0; }
+        .recog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 2.5rem; margin-top: 1.5rem; }
+        .recog-card { border-top: 1px solid var(--white-faint); padding: 1.2rem 0; }
+        .recog-card .rec-event { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white-dim); margin-bottom: 0.6rem; display: block; }
+        .recog-card .rec-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); display: inline; }
+        .recog-card .rec-work { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 500; color: var(--green-light); display: inline; }
+        .recog-card .rec-desc { font-family: 'Syne', sans-serif; font-size: 0.85rem; color: var(--white-soft); line-height: 1.7; margin: 0.5rem 0 0.8rem; }
         .recog-card .rec-handle { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--white-dim); text-decoration: none; border-bottom: 1px solid var(--white-faint); transition: all 0.3s ease; }
         .recog-card .rec-handle:hover { color: var(--green-light); border-color: var(--green-light); }
 
@@ -1006,22 +1007,18 @@
 
         <section class="recognition" id="recognition">
             <div class="container">
-                <span class="section-label">Beyond the Studio</span>
-                <h2 class="section-title">Recognition</h2>
-                <p class="talks-intro">Two outstanding works from Creative Photography were selected for presentation during distinguished campus visits in 2025, recognising authentic artistic practice rooted in authentic cultural identity.</p>
+                <span class="section-label">Beyond the Studio · Recognition</span>
                 <div class="recog-grid">
                     <div class="recog-card">
-                        <span class="rec-event">Visit of H.E. Sam Mostyn AC, Governor-General of Australia · 12 September 2025</span>
-                        <h3 class="rec-name">Ngo Dinh Hoang Phuoc</h3>
-                        <p class="rec-work">Hưng Long (興龍, Rising Dragon)</p>
-                        <p class="rec-desc">A digital photo-collage that reimagines the Vietnamese dragon, constructed from photographs of neighborhood flora. Grounded in local materials and cultural symbolism, the work reflects prosperity, unity, and craftsmanship through a contemporary visual language.</p>
+                        <span class="rec-event">Presented to H.E. Sam Mostyn AC, Governor-General of Australia · 12 September 2025</span>
+                        <h3 class="rec-name">Ngo Dinh Hoang Phuoc · </h3><span class="rec-work">Hưng Long (興龍, Rising Dragon)</span>
+                        <p class="rec-desc">The Vietnamese dragon reimagined as a digital photo-collage built from photographs of neighborhood flora.</p>
                         <a class="rec-handle" href="https://www.instagram.com/hoangphuoc213" target="_blank">@hoangphuoc213 · Design Studies, SCD</a>
                     </div>
                     <div class="recog-card">
-                        <span class="rec-event">Visit of H.E. Jason Clare MP, Australian Minister for Education · 10 December 2025</span>
-                        <h3 class="rec-name">Ton Nguyen</h3>
-                        <p class="rec-work">Mẫu (母, Mother)</p>
-                        <p class="rec-desc">A reflection on Hanoi, motherhood, and ancestral care, drawing from personal memory and Vietnamese spiritual traditions. Through composition and costume, the work explores how invisible affections cycle and flow across generations.</p>
+                        <span class="rec-event">Presented to H.E. Jason Clare MP, Australian Minister for Education · 10 December 2025</span>
+                        <h3 class="rec-name">Ton Nguyen · </h3><span class="rec-work">Mẫu (母, Mother)</span>
+                        <p class="rec-desc">Hanoi, motherhood, and ancestral care, traced through composition, costume, and personal memory.</p>
                         <a class="rec-handle" href="https://www.instagram.com/ton_____ng" target="_blank">@ton_____ng · Digital Media, SCD</a>
                     </div>
                 </div>
