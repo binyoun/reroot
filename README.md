@@ -194,3 +194,31 @@ Rose, D. H., & Meyer, A. (2002). Teaching every student in the digital age: Univ
 Vygotsky, L. S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press.
 <img width="468" height="628" alt="image" src="https://github.com/user-attachments/assets/023b2d04-448b-402a-bc07-2f97efb4270f" />
 <img width="468" height="628" alt="image" src="https://github.com/user-attachments/assets/023b2d04-448b-402a-bc07-2f97efb4270f" />
+
+---
+
+## Adding a new semester (playbook)
+
+Each edition is one `exhibition-entry` block in `index.html`. The gallery
+lightbox and carousel are data-driven, so no JavaScript changes are needed.
+
+1. **Photos**: pick ~18 documentation shots. Optimize before committing:
+   `sips -Z 1800 -s format jpeg -s formatOptions 70 IN.jpg --out image/<sem>show-NN.jpg`
+   (note: `sips -Z` upscales images smaller than 1800px, skip those).
+2. **Exhibition block**: copy the previous `<!-- EXHIBITION 01 ... -->` block,
+   paste it above, renumber the comments, update title, date line, description,
+   stats, featured image, and the carousel thumbs. Every `img` needs
+   `loading="lazy" decoding="async"` and descriptive alt text.
+3. **Artists**: one `div.artist` per person. With full info, add
+   `data-artist`, `data-title`, `data-year`, `data-medium`, `data-link`,
+   optional `data-image` (representative image in `image/`). Names-only rows
+   take no data attributes. `data-simple="true"` + `data-link` makes the row
+   a direct link with no modal.
+4. **Artist talks**: add a new `S<sem>` group in the talks section, one
+   `talk-card talk-card-static` per round.
+5. **Collect student info** with the template in
+   `~/Downloads/02_Teaching/creative_final_show_<sem>/reroot_s..._submission_list.txt`.
+6. **Writing rule**: no em-dashes anywhere. Use commas, colons, or middle dots.
+7. **Deploy**: commit and push to `main`. If the Pages build hangs
+   ("building" for more than 2 minutes), re-trigger:
+   `gh api -X POST repos/binyoun/reroot/pages/builds`.

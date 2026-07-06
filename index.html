@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rễ-root · Creative Photography · RMIT Vietnam</title>
+    <meta name="description" content="rễ-root: the Creative Photography exhibition archive and artist talk series at RMIT University Vietnam. Lens-based works exploring culture, heritage, and identity through rhizomic thinking.">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="rễ-root · Creative Photography · RMIT Vietnam">
+    <meta property="og:description" content="Exhibition archive and artist talk series: lens-based works exploring culture, heritage, and identity.">
+    <meta property="og:url" content="https://binyoun.github.io/reroot/">
+    <meta property="og:image" content="https://binyoun.github.io/reroot/image/og-reroot.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://binyoun.github.io/reroot/image/og-reroot.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -453,6 +464,7 @@
             transition: all 0.35s ease;
         }
         .artist:hover { border-bottom-color: var(--green); padding-left: 0.5rem; }
+        .artist:focus-visible { outline: 1px solid var(--green-light); outline-offset: 3px; }
         .artist:hover .artist-name { color: var(--green-light); }
 
         .artist-name {
@@ -577,9 +589,10 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            nav { padding: 1rem; }
-            .nav-links { gap: 1rem; }
-            .nav-links a { font-size: 0.55rem; }
+            nav { padding: 1rem; align-items: flex-start; gap: 1rem; }
+            .nav-logo { white-space: nowrap; }
+            .nav-links { gap: 0.5rem 1rem; flex-wrap: wrap; justify-content: flex-end; }
+            .nav-links a { font-size: 0.55rem; white-space: nowrap; }
             .hero-top { top: 5rem; }
             .hero-title .viet { font-size: clamp(4.5rem, 24vw, 6rem); }
             .hero-title .root { font-size: clamp(3.5rem, 19vw, 5rem); }
@@ -596,7 +609,10 @@
             .archive-label { padding: 1.5rem 1.5rem 1rem; }
         }
         @media (max-width: 480px) {
-            .nav-links { display: none; }
+            nav { padding: 0.8rem 1rem; align-items: flex-start; gap: 1rem; }
+            .nav-logo { font-size: 1.1rem; white-space: nowrap; }
+            .nav-links { gap: 0.45rem 0.9rem; flex-wrap: wrap; justify-content: flex-end; }
+            .nav-links a { font-size: 0.5rem; white-space: nowrap; }
             .hero-title .viet { font-size: 4rem; }
             .hero-title .root { font-size: 3.2rem; }
             .talks-grid, .resources-grid, .faculty-grid { grid-template-columns: 1fr; }
@@ -620,6 +636,7 @@
             <li><a href="#philosophy">Philosophy</a></li>
             <li><a href="#talks">Artist Talks</a></li>
             <li><a href="#exhibitions">Exhibitions</a></li>
+            <li><a href="workshops/">Workshops</a></li>
             <li><a href="#resources">Resources</a></li>
             <li><a href="#faculty">Faculty</a></li>
         </ul>
@@ -771,7 +788,7 @@
                         </div>
 
                         <div class="gallery-carousel-wrapper">
-                            <button class="carousel-nav carousel-prev">‹</button>
+                            <button aria-label="Scroll gallery back" class="carousel-nav carousel-prev">‹</button>
                             <div class="gallery-carousel">
                                 <div class="gallery-thumb"><img src="image/s1show-01.jpg" alt="Visitors viewing wall displays of photographic prints" loading="lazy" decoding="async"></div>
                                 <div class="gallery-thumb"><img src="image/s1show-02.jpg" alt="Audience seated for a presentation during the exhibition" loading="lazy" decoding="async"></div>
@@ -791,7 +808,7 @@
                                 <div class="gallery-thumb"><img src="image/s1show-16.jpg" alt="A pink fabric installation with a zine and printed text" loading="lazy" decoding="async"></div>
                                 <div class="gallery-thumb"><img src="image/s1show-17.jpg" alt="Framed works arranged with a dried leaf on a table" loading="lazy" decoding="async"></div>
                             </div>
-                            <button class="carousel-nav carousel-next">›</button>
+                            <button aria-label="Scroll gallery forward" class="carousel-nav carousel-next">›</button>
                         </div>
                     </div>
 
@@ -870,7 +887,7 @@
 
                         <!-- Horizontal Carousel -->
                         <div class="gallery-carousel-wrapper">
-                            <button class="carousel-nav carousel-prev" id="carouselPrev">‹</button>
+                            <button aria-label="Scroll gallery back" class="carousel-nav carousel-prev" id="carouselPrev">‹</button>
                             <div class="gallery-carousel" id="galleryCarousel">
                                 <div class="gallery-thumb" data-index="1"><img src="image/rerootshow-0.jpg" alt="rễ-root exhibition, Media Studio, January 2026" loading="lazy" decoding="async"></div>
                                 <div class="gallery-thumb" data-index="2"><img src="image/rerootshow-3.jpg" alt="rễ-root exhibition, Media Studio, January 2026" loading="lazy" decoding="async"></div>
@@ -889,7 +906,7 @@
                                 <div class="gallery-thumb" data-index="15"><img src="image/rerootshow-17.jpg" alt="rễ-root exhibition, Media Studio, January 2026" loading="lazy" decoding="async"></div>
                                 <div class="gallery-thumb" data-index="16"><img src="image/rerootshow-18.jpg" alt="rễ-root exhibition, Media Studio, January 2026" loading="lazy" decoding="async"></div>
                             </div>
-                            <button class="carousel-nav carousel-next" id="carouselNext">›</button>
+                            <button aria-label="Scroll gallery forward" class="carousel-nav carousel-next" id="carouselNext">›</button>
                         </div>
                     </div>
 
@@ -984,6 +1001,13 @@
                         <span class="res-title">Miro Archive</span>
                         <span class="res-desc">Class planning board, exhibition development, and collaborative workspace for Creative Photography.</span>
                     </a>
+                    <a href="workshops/" class="resource-card">
+                        <div class="res-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2v8"/><path d="M12 10q-4 3-6 8"/><path d="M12 10q4 3 6 8"/><path d="M12 10v10"/></svg>
+                        </div>
+                        <span class="res-title">Workshop Series</span>
+                        <span class="res-desc">Four studio workshops: from planting the concept to bringing the root to light. Slides and guides for each session.</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1021,6 +1045,7 @@
                         <a href="#philosophy">Philosophy</a>
                         <a href="#talks">Artist Talks</a>
                         <a href="#exhibitions">Exhibitions</a>
+                        <a href="workshops/">Workshops</a>
                         <a href="#resources">Resources</a>
                     </div>
                     <div class="footer-col">
@@ -1041,7 +1066,7 @@
     <!-- ARTIST MODAL -->
     <div class="modal-overlay" id="artistModal">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose"></button>
+            <button aria-label="Close artist details" class="modal-close" id="modalClose"></button>
             <img class="modal-image" id="modalImage" src="" alt="">
             <div class="modal-info">
                 <h2 class="modal-artist-name" id="modalArtist"></h2>
@@ -1057,10 +1082,10 @@
 
     <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose"></button>
-        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+        <button aria-label="Close image viewer" class="lightbox-close" id="lightboxClose"></button>
+        <button aria-label="Previous image" class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
         <img src="" alt="" id="lightboxImg">
-        <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+        <button aria-label="Next image" class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
     </div>
 
     <script>
@@ -1160,11 +1185,21 @@
         const modalImage = document.getElementById('modalImage');
         const modalDetails = document.getElementById('modalDetails');
 
+        let lastFocused = null;
+
         document.querySelectorAll('.artist').forEach(a => {
+            if (a.dataset.link || a.dataset.artist) {
+                a.setAttribute('tabindex', '0');
+                a.setAttribute('role', 'button');
+                a.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); a.click(); }
+                });
+            }
             a.addEventListener('click', () => {
                 const link = a.dataset.link;
                 if (a.dataset.simple === 'true' && link) { window.open(link, '_blank'); return; }
                 const name = a.dataset.artist; if (!name) return;
+                lastFocused = a;
                 document.getElementById('modalArtist').textContent = name;
                 document.getElementById('modalTitle').textContent = a.dataset.title || '';
                 document.getElementById('modalYear').textContent = a.dataset.year || '2025';
@@ -1175,10 +1210,14 @@
                 document.getElementById('modalTitle').style.display = a.dataset.title ? 'block' : 'none';
                 modalDetails.style.display = (a.dataset.year || a.dataset.medium) ? 'grid' : 'none';
                 modal.classList.add('active'); document.body.classList.add('modal-open');
+                document.getElementById('modalClose').focus();
             });
         });
 
-        function close() { modal.classList.remove('active'); document.body.classList.remove('modal-open'); }
+        function close() {
+            modal.classList.remove('active'); document.body.classList.remove('modal-open');
+            if (lastFocused) { lastFocused.focus(); lastFocused = null; }
+        }
         document.getElementById('modalClose').addEventListener('click', close);
         modal.addEventListener('click', e => { if (e.target === modal) close(); });
         document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) close(); });
