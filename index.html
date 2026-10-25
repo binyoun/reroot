@@ -278,6 +278,10 @@
         .talks-intro { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 400; color: var(--white-soft); line-height: 1.9; max-width: 750px; margin-bottom: 2.5rem; }
         .talks-sub { display: block; margin: 2.5rem 0 1rem; }
         .talks-gallery { background: var(--bg-card); border: 1px solid var(--white-faint); margin-top: 1.5rem; }
+        .talks-posters { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--white-faint); }
+        .talks-posters img { max-height: none; aspect-ratio: 2245 / 1587; object-fit: cover; }
+        .gallery-featured.talks-posters:hover img { transform: none; filter: grayscale(20%); }
+        .gallery-featured.talks-posters img:hover { filter: grayscale(0%); }
         .talks-note { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--white-dim); letter-spacing: 0.05em; line-height: 1.9; margin-top: 1.5rem; max-width: 750px; }
         .talks-note em { color: var(--green-light); font-style: normal; }
 
@@ -743,12 +747,16 @@
 
                 <div class="archive-preview talks-gallery">
                     <h4 class="archive-label">1-2026 talks in pictures · Rounds 1 to 4 · Photos: Nick Tram and the rễ-root team</h4>
-                    <div class="gallery-featured">
-                        <img src="image/talks-s1-r1-01.jpg" alt="Round 1: Le Duc Anh and Do Le Gia An in conversation on stage, with the Vị Nhà and Childhood Reclaim slides behind them" loading="lazy" decoding="async">
+                    <div class="gallery-featured talks-posters">
+                        <img src="image/talks-s1-poster-r1.jpg" alt="Round 1 poster: Anh Le Duc, Vị Nhà (Tastes Like Home), and An Do Le Gia, Childhood Reclaim" loading="lazy" decoding="async">
+                        <img src="image/talks-s1-poster-r2.jpg" alt="Round 2 poster: Trần Quốc Hào, The Bond, and Trần Khiết Nghi, the liminal self" loading="lazy" decoding="async">
+                        <img src="image/talks-s1-poster-r3.jpg" alt="Round 3 poster: Ton, There Is A Place I Can't Enter, and Emma, i miss" loading="lazy" decoding="async">
+                        <img src="image/talks-s1-poster-r4.jpg" alt="Round 4 poster: Alicia Ý Huỳnh, INTRA-SELF, INTER-SELF, and Florin Schroth, Layers of Life" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-carousel-wrapper">
                         <button aria-label="Scroll talk photos back" class="carousel-nav carousel-prev">‹</button>
                         <div class="gallery-carousel">
+                            <div class="gallery-thumb"><img src="image/talks-s1-r1-01.jpg" alt="Round 1: Le Duc Anh and Do Le Gia An in conversation on stage, with the Vị Nhà and Childhood Reclaim slides behind them" loading="lazy" decoding="async"></div>
                             <div class="gallery-thumb"><img src="image/talks-s1-r1-02.jpg" alt="Round 1: the audience seated in the Activator Room during the talk" loading="lazy" decoding="async"></div>
                             <div class="gallery-thumb"><img src="image/talks-s1-r1-03.jpg" alt="Round 1: an artist presenting beside a projected slide, in black and white" loading="lazy" decoding="async"></div>
                             <div class="gallery-thumb"><img src="image/talks-s1-r1-04.jpg" alt="Round 1: students watching a presentation from the tiered seating" loading="lazy" decoding="async"></div>
@@ -1333,17 +1341,16 @@
 
         // Wire each exhibition gallery independently
         document.querySelectorAll('.archive-preview').forEach(gallery => {
-            const featuredWrap = gallery.querySelector('.gallery-featured');
-            const featuredImg = gallery.querySelector('.gallery-featured img');
+            const featuredImgs = Array.from(gallery.querySelectorAll('.gallery-featured img'));
             const thumbWraps = Array.from(gallery.querySelectorAll('.gallery-thumb'));
 
             const set = [];
-            if (featuredImg) set.push(featuredImg.getAttribute('src'));
+            featuredImgs.forEach(img => set.push(img.getAttribute('src')));
             thumbWraps.forEach(t => { const img = t.querySelector('img'); if (img) set.push(img.getAttribute('src')); });
 
-            if (featuredWrap) featuredWrap.addEventListener('click', () => openLightbox(set, 0));
+            featuredImgs.forEach((img, i) => img.addEventListener('click', () => openLightbox(set, i)));
             thumbWraps.forEach((thumb, i) => {
-                thumb.addEventListener('click', () => openLightbox(set, featuredImg ? i + 1 : i));
+                thumb.addEventListener('click', () => openLightbox(set, featuredImgs.length + i));
             });
 
             // Carousel arrows scoped to this gallery
